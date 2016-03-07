@@ -21,7 +21,7 @@
 }
 
 .demo .zoomer.dark_zoomer {
-	background: #333 url(img/zoomer-bg-dark.png) repeat center;
+	background: #333 url(bg-snow.jpg) repeat center;
 }
 
 .demo .zoomer.dark_zoomer img {
