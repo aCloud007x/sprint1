@@ -11,7 +11,7 @@
 <script type="text/javascript"></script>
 	
 <style>
-.demo .zoomer_wrapper {
+.demo .container .col-lg-6 .zoomer_wrapper {
 	border: 1px solid #ddd;
 	border-radius: 3px;
 	height: 500px;
@@ -27,6 +27,15 @@
 .demo .zoomer.dark_zoomer img {
 	box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
+
+
+div.blue {
+	background-color: #EFFBFB;
+}
+body {
+	background-image: url('bg2.gif');
+}
+
 </style>
 	<script>
 		$(document).ready(function() {
@@ -74,7 +83,7 @@
 	?>
 
 	<article>
-
+	<div class="blue">
 		<?php while($objResult = mysqli_fetch_array($objQuery)) { ?>
 			<div class="container">
 
@@ -85,15 +94,17 @@
 	        		</div>
 	        		<div class="col-lg-6">
 	        			<br><br>
-						<h2><span><b></b></span> <?php echo $objResult["Pname"];?></h2><hr>
+						<center><h2><?php echo $objResult["Pname"];?></h2></center><hr width="80%">
 						<h4><span><b>Code:</b></span> <?php echo $objResult["Pid"];?></h4>
 						<h4><span><b>Status:</b></span> <?php echo $objResult["Pstatus"];?></h4>
 						<h4><span><b>Description:</b></span> <?php echo $objResult["Pdetail"];?></h4>
 						<h4><span><b>Size/Dimension:</b></span> <?php echo $objResult["Psize"];?></h4>
 						<br>
-						<button type="button" class="btn btn-primary btn-sm pull-right"><span class="glyphicon glyphicon-shopping-cart"> </span> Add to Cart </button>
+						
 					</div>
-
+                     <button style="margin-right:20%;margin-top:5%;" type="button" class="btn btn-primary btn-sm pull-right"><span class="glyphicon glyphicon-shopping-cart"> </span> Add to Cart </button>
+	</div>
+   
 			</div>
 		<?php } ?>
 

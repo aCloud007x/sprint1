@@ -12,7 +12,7 @@
 	
 		<section class="proSec">
 			<div class="container">
-			<div class="row marketing">
+			<div id="popular" class="row marketing" >
 				<?php
 			        $sql="SELECT Pphoto, Pname, Pprice, Pid FROM product"; // คำสั่ง sql อ่านข้อมูลจากตาราง tbl_name
 			        $result=mysqli_query($objConnect, $sql); // คิวรี่คำสั่ง sql

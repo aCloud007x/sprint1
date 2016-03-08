@@ -18,7 +18,7 @@ include('connect.php'); //เก็บข้อมูลการเชื่อ
 
 
 
-<body style="padding:0px; margin:0px; background-color:#fff;font-family:Arial, sans-serif">
+<body style="padding:0px; margin:0px; background-color:#fff;font-family:Arial, sans-serif" id="highlight">
 
     <!-- #region Jssor Slider Begin -->
 
@@ -168,7 +168,7 @@ include('connect.php'); //เก็บข้อมูลการเชื่อ
         <!-- Arrow Navigator -->
         <span data-u="arrowleft" class="jssora03l" style="top:0px;left:8px;width:55px;height:55px;" data-autocenter="2"></span>
         <span data-u="arrowright" class="jssora03r" style="top:0px;right:8px;width:55px;height:55px;" data-autocenter="2"></span>
-        <a href="http://www.jssor.com" style="display:none">Slideshow Maker</a>
+
     </div>
    
     <script>

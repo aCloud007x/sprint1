@@ -17,13 +17,13 @@
 
 
 <header class="bg">
-	
-	<!-- CONTAINER CONTENT -->
-	<div class="container" style="padding-top: 45px;">
+  
+  <!-- CONTAINER CONTENT -->
+  <div class="container " style="padding-top: 45px;">
 
-	<!-- LOGO -->
-	<div class="page-header"><img src="logoVer4.gif" width="300"></div>
-	
+  <!-- LOGO -->
+  <div class="page-header"><img src="logoVer4.gif" width="300" class="img-responsive"></div>
+  
 <div align="right" style="margin-right: 0%;margin-left: 0%;margin-bottom:0.5%;">
 <nav class="navbar navbar-default">
   <div class="container-fluid">
@@ -35,12 +35,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
+            
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="index.php"><b>Home</b></a></li>
+        <li class="active"><a href="index.php"><b><img src="home.gif" width="14"> Home</b></a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><b>Products </b><span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -53,14 +54,14 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-      	<li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
         <li><a href="#"><b>Login</a></b></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
   </div>
 </nav>
-</div> 	<!-- END CONTAINER CONTENT -->
+</div>  <!-- END CONTAINER CONTENT -->
 </header>
 
 

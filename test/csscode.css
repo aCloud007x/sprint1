@@ -1,0 +1,52 @@
+.newPro {
+	width: 500px;
+	height: 300px;
+}
+.picNew {
+	width: 40px;
+	height: 40px;
+	float: left;
+	margin-left: 50px;
+	margin-top: -10px;
+}
+.h1pro {
+	color: #000000;
+	font-size: 20px;
+	font-family: sans-serif, Arial;
+	clear: right;
+	margin-top: 50px;
+	margin-left: 100px;
+}
+.picPop {
+	width: 48px;
+	height: 48px;
+	margin-left: 50px;
+	float: left;
+	margin-top: 10px;
+}
+h2 {
+	font-family: sans-serif, Arial;
+	font-size: 20px;
+	margin-top: 46px;
+	clear: right;
+	color: #000000;
+}
+section.proSec div div div img {
+	width: 178px;
+	height: 115px;
+	padding-right: 5px;
+} 
+section.proSec div div div{
+	border: solid 1px #DDDDDD;
+	padding: 5px 10px 20px 10px;
+	margin: 17px;
+}
+.ppro {
+	color: #000000;
+	font-family: sans-serif, Arial;
+	font-size: 18px;
+	padding-left: 28px;
+}
+.spanp22 {
+	font-weight: bold;
+}
