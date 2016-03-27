@@ -1,4 +1,4 @@
-<head>
+﻿<head>
 <link rel="stylesheet" type="text/css" href="csscode.css">
 </head>
 	<?php  
@@ -26,8 +26,8 @@
 			        	<center><img src= <?php echo $objResult["Pphoto"];?>></center>
 			        	<br>
 			            <p class="ppro"><span class="spanp22">Name:</span> <?php echo $objResult["Pname"];?></p>
-						<p class="ppro"><span class="spanp22">Price:</span> <?php echo $objResult["Pprice"];?></p>
-						<?php echo "<center><a href='detail.php?Pid=".$objResult["Pid"]."'><button type='submit'  class='btn btn-primary'>View detail</button></a></center>" ?>
+						<p class="ppro"><span class="spanp22">Price:</span> <?php echo $objResult["Pprice"];?> baht</p>
+						<?php echo "<center><a id='pid".$objResult["Pid"]."' href='detail.php?Pid=".$objResult["Pid"]."'><button type='submit' class='btn btn-primary'>View detail</button></a></center>" ?>
 						<!-- <center><a href="detail.php?Pid=''"><button type="submit"  class="btn btn-primary">View detail</button></a></center> -->
 			       	</div>
 			        <?php

@@ -1,4 +1,4 @@
-<?php include('header-menu.php'); ?> 
+﻿<?php include('header-menu.php'); ?> 
 
 
 <!-- begin zoom function -->
@@ -7,6 +7,13 @@
 <script src="js/jquery.fs.zoomer.js"></script>
 <script src="ie/jquery.fs.zoetrope.min.js"></script>
 
+<link href="js/js/jquery-ui.min.css" rel="stylesheet">
+<!-- 
+<script src="js/js/jquery-2.1.1.min.js"> </script>
+ -->
+<script src="js/js/jquery-ui.min.js"> </script>
+<script src="js/js/jquery.form.min.js"> </script>
+<script src="js/js/jquery.blockUI.js"> </script>
 
 <script type="text/javascript"></script>
 	
@@ -36,8 +43,17 @@ body {
 	background-image: url('bg2.gif');
 }
 
+tr .customTR :hover { 
+   background: red; 
+}
+td a { 
+   display: block; 
+   
+}
+
 </style>
 	<script>
+
 		$(document).ready(function() {
 			$(".demo .zoomer_basic").zoomer();
 
@@ -63,11 +79,37 @@ body {
 				$(".demo .load_zoomer_tiled").off("click");
 			});
 		});
+
+		$(document).on('click', 'button#btn-add-to-cart', function() {
+
+				// $.ajax({
+				// type: 'post',
+				// url: 'cart-add.php',
+				// data: $('#dialog-form').serializeArray(),
+				// dataType: 'html',
+				// beforeSend: function() {
+				// 	$('#dialog').block({message:'<h3>กำลังหยิบใส่รถเข็น...</h3>'});
+				// },
+				// success: function(result) {
+				// 	if(result.length > 0) {
+				// 		$('#dialog').unblock();
+				// 		alert(result);
+				// 	}
+				// 	else {
+				// 		cartCount();
+				// 		$('#dialog').block({message:'<h3>เพิ่มสินค้าในรถเข็นแล้ว...</h3>', timeout:2000, showOverlay:false, 
+				// 		 							css: {padding:'2px 20px', background:'#ffc', color:'green', width: 'auto'}});
+				// 		location.href = "order-cart.php";
+				// 		}
+				// 	}
+				// });
+				// alert("Hi");
+		});
 	</script>
 <!-- end zoom function -->
 <!-- HEAD -->
 <body> <!-- Content BODY HERE -->
-<div class="container" style="padding-top: 50px;background-color: #FAFAFA;"> <!-- 45px from top & BG color = light gray -->
+<div class="container" style="padding-top: 45px;background-color: #FAFAFA;"> <!-- 45px from top & BG color = light gray -->
 
 <?php 
     $page=$_GET["Pid"];
@@ -85,11 +127,11 @@ body {
 	<article>
 	<div class="blue">
 		<?php while($objResult = mysqli_fetch_array($objQuery)) { ?>
-			<div class="container">
+			<div class="container" style="padding-right: 3%;">
 
 	        		<div class="col-lg-6" align="center">
 	        			<div class="zoomer_wrapper zoomer_basic"> <!-- zoom function -->
-	        				<img src= <?php echo $objResult["Pphoto"];?>  >
+	        				<img id='img<?php echo $objResult["Pid"];?>' src= <?php echo $objResult["Pphoto"];?>  >
 	        			</div> <!-- zoom function -->
 	        		</div>
 	        		<div class="col-lg-6">
@@ -98,11 +140,19 @@ body {
 						<h4><span><b>Code:</b></span> <?php echo $objResult["Pid"];?></h4>
 						<h4><span><b>Status:</b></span> <?php echo $objResult["Pstatus"];?></h4>
 						<h4><span><b>Description:</b></span> <?php echo $objResult["Pdetail"];?></h4>
-						<h4><span><b>Size/Dimension:</b></span> <?php echo $objResult["Psize"];?></h4>
+						<h4><span><b>Size:</b></span> <?php echo $objResult["Psize"];?></h4>
+						<h4><span><b>Price:</b></span> <?php echo $objResult["Pprice"];?> baht</h4>
 						<br>
 						
 					</div>
-                     <button style="margin-right:20%;margin-top:5%;" type="button" class="btn btn-primary btn-sm pull-right"><span class="glyphicon glyphicon-shopping-cart"> </span> Add to Cart </button>
+					<form id="dialog-form" action="cart-add.php" method="POST" >
+						<input type="hidden" name="pid" value="<?php echo $objResult["Pid"]; ?>">
+					 	<input type="hidden" name="quantity" id="dialog-quantity" value="1" min="1">
+					    <button type="submit" style="margin-right:20%;margin-top:5%;font-color:white;" class="btn btn-primary pull-right" data-id=""><span class="glyphicon glyphicon-shopping-cart"> Add to Cart</button>
+					</form>
+
+                        
+
 	</div>
    
 			</div>
@@ -113,7 +163,7 @@ body {
 		<?php  
 		$objConnect = $connect;
 			//$objDB = mysqli_select_db("sec01_group3");
-			$strSQL = "SELECT Mname, Pprice, Mlink FROM member, product, sell WHERE sell.Pid = product.Pid AND sell.Mid= member.Mid AND sell.Pid = '".$page."' GROUP BY Mname, Mlink, Pprice";
+			$strSQL = "SELECT Mname, Pprice FROM member, product, sell WHERE sell.Pid = product.Pid AND sell.Mid= member.Mid AND sell.Pid = '".$page."' GROUP BY Mname, Pprice";
 			$objQuery = mysqli_query($objConnect,$strSQL) or die ("Error Query [".$strSQL."]");
 		?>
 			
@@ -121,20 +171,19 @@ body {
     				<tr class="info" align="center" style="font-size: large;">
             			<td>Seller</td>
            				<td>Price</td>
-            			<td>Link</td>
 			        </tr>
 					<?php
-			            $sql="SELECT Mname, Pprice, Mlink FROM member, product, sell WHERE sell.Pid = product.Pid AND sell.Mid= member.Mid AND sell.Pid = '".$page."' GROUP BY Mname, Mlink, Pprice"; // คำสั่ง sql อ่านข้อมูลจากตาราง tbl_name
+			            $sql="SELECT Mname, Pprice FROM member, product, sell WHERE sell.Pid = product.Pid AND sell.Mid= member.Mid AND sell.Pid = '".$page."' GROUP BY Mname, Pprice"; // คำสั่ง sql อ่านข้อมูลจากตาราง tbl_name
 			            $result=mysqli_query($objConnect,$sql); // คิวรี่คำสั่ง sql
 			            $num=mysqli_num_rows($result); // ตรวจสอบจำนวน record ที่คิวรี่ออกมา
 			            if($num>0){ // ถ้าจำนวน record มากกว่า 0
 			                $count=1; // กำหนดตัวแปร count เพื่อระบุตำแหน่ง record
 			                while($objResult = mysqli_fetch_array($objQuery)){ // วน loop ดึงข้อมูลออกมา ทีละ record
 			        ?>
-			        <tr align="center">
-			            <td ><?php echo $objResult["Mname"];?></td>
-						<td><?php echo $objResult["Pprice"];?></td>
-						<td><a href="#" ><?php echo $objResult["Mlink"];?></a></td>
+			        <tr align="center" class="customTR">
+
+			            <td > <a href="#"> <?php echo $objResult["Mname"];?> </a> </td>
+						<td > <a href="#"> <?php echo $objResult["Pprice"];?> </a> </td>
 			        </tr>
 			        <?php
 			            $count+=1; // เพิ่ม count ทีละ 1
@@ -149,5 +198,5 @@ body {
 
 </div>
 </body> <!-- END BODY -->
-<?php include('footer.php'); ?> <!-- FOOT -->
 </div> <!-- zoom function -->
+<?php include('footer.php'); ?> <!-- FOOT -->

@@ -28,9 +28,9 @@ include('connect.php'); //เก็บข้อมูลการเชื่อ
     <script type="text/javascript" src="js/jssor.slider.min.js"></script>
     <!-- use jssor.slider.debug.js instead for debug -->
     <script>
-        jssor_1_slider_init = function() {
+        highlight_slide_slider_init = function() {
             
-            var jssor_1_options = {
+            var highlight_slide_options = {
               $AutoPlay: true,
               $AutoPlaySteps: 4,
               $SlideDuration: 160,
@@ -48,15 +48,15 @@ include('connect.php'); //เก็บข้อมูลการเชื่อ
               }
             };
             
-            var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
+            var highlight_slide_slider = new $JssorSlider$("highlight_slide", highlight_slide_options);
             
             //responsive code begin
             //you can remove responsive code if you don't want the slider scales while window resizing
             function ScaleSlider() {
-                var refSize = jssor_1_slider.$Elmt.parentNode.clientWidth;
+                var refSize = highlight_slide_slider.$Elmt.parentNode.clientWidth;
                 if (refSize) {
                     refSize = Math.min(refSize, 1009);//ขนาดสไลค์
-                    jssor_1_slider.$ScaleWidth(refSize);
+                    highlight_slide_slider.$ScaleWidth(refSize);
                 }
                 else {
                     window.setTimeout(ScaleSlider, 30);
@@ -128,7 +128,7 @@ include('connect.php'); //เก็บข้อมูลการเชื่อ
         .jssora03r.jssora03rdn { background-position: -303px -33px; }
     </style>
 	
-    <div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 809px; height: 150px; overflow: hidden; visibility: hidden;">
+    <div id="highlight_slide" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 809px; height: 150px; overflow: hidden; visibility: hidden;">
         <!-- Loading Screen -->
         <div data-u="loading" style="position: absolute; top: 0px; left: 0px;">
             <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
@@ -144,7 +144,7 @@ include('connect.php'); //เก็บข้อมูลการเชื่อ
             <div style="display: none;">
 				
  				
- 				<a href="<?php echo 'detail.php?Pid=';echo $row["Pid"]; ?>"><img data-u="image" style="z-index: -1;" src="<?php echo $row["Pphoto"]; ?>"/>
+ 				<a href="<?php echo 'detail.php?Pid=';echo $row["Pid"]; ?>"><img id="pidd<?php echo $row["Pid"]; ?>" data-u="image" style="z-index: -1;" src="<?php echo $row["Pphoto"]; ?>"/>
                 <span style="color:hsla(0,0%,0%,1);font-size:15px; text-align:center;position: absolute;width:100%;height-min:15%;padding-top:1%;padding-bottom:1%;bottom:7%;
                 left:0%;background:white;opacity:0.8;filter:alpha(opacity=20)"><span style="font-weight:bold">Name :</span><?php echo $row["Pname"]; ?><span style="font-weight:bold"><br /> Price :</span> <?php echo $row["Pprice"]; ?> Baht</span>
                 </a>
@@ -172,7 +172,7 @@ include('connect.php'); //เก็บข้อมูลการเชื่อ
     </div>
    
     <script>
-        jssor_1_slider_init();
+        highlight_slide_slider_init();
     </script>
 
     <!-- #endregion Jssor Slider End -->

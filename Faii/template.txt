@@ -1,0 +1,21 @@
+<li><?php if ($_SESSION['memName'])
+{
+	echo '<a href="profile.php"><span class="glyphicon glyphicon-user"> </span> My Profile</a></li>';
+		
+		}
+		else
+		{
+		echo '<a href="register.php"><span class="glyphicon glyphicon-plus"> </span> Register</a></li>';
+}
+?>
+<li><a href="payment.php"><span class="glyphicon glyphicon-usd"> </span> Payment</a></li>
+<li> <?php if ($_SESSION['memName'])
+{
+	echo '<a href="killsession.php"><span class="glyphicon glyphicon-off"> </span> LOGOUT</a></li>';
+		
+		}
+		else
+		{
+		echo '<a href="login.php"><span class="glyphicon glyphicon-transfer"> </span> LOGIN</a></li>';
+}
+?>

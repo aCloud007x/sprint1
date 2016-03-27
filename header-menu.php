@@ -10,6 +10,79 @@
   header.bg {
     background-image: url('bg.gif');
   }
+
+  #login_bar{
+	display: inline-block;
+	float: right;
+	background-color: white;
+	border: 2px #81BEF7;
+	border-style: dashed;
+	height: auto;
+} 
+#login_signup > li{
+  padding-left: 10px;
+  padding-right: 10px;
+  display: block;
+    float:left;    
+    line-height:25px; /* ตั้งตามขนาดของรูปนะ*/
+      color:grey;
+
+}
+
+#login_signup > li > a:link {
+  color:#5e7cf7;
+  font-weight: bold;
+  background-color:transparent; text-decoration:none;
+}
+#login_signup > li > a:visited {
+  color:#5e7cf7;
+  background-color:transparent; text-decoration:none
+}
+#login_signup > li > a:hover {
+  color:red; background-color:transparent; text-indent: inherit;
+}
+#login_signup > li > a:active {
+  color:yellow; background-color:transparent; text-decoration:underline
+}
+/*css drop down member name*/
+.dropbtn > a {
+    background-color: #fffff;
+    color: black;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+	
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #fffff;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover {color: blue;}
+
+.show {display:block;}
 </style>
 
 </head>
@@ -21,9 +94,43 @@
   <!-- CONTAINER CONTENT -->
   <div class="container " style="padding-top: 45px;">
 
-  <!-- LOGO -->
-  <div class="page-header"><img src="logoVer4.gif" width="300" class="img-responsive"></div>
-  
+  <!-- Login - Shopping Cart -->
+  <div id="login_bar">               
+    <ul class="nav" id="login_signup">
+        <li><a href="#"><img src="shopcart.png" width="25" class="img-responsive"></a></li>
+<?php 
+if(!isset($_SESSION['user'])) {  
+?>
+        <li><a href="login.php" id="login_link">Login</a></li>
+<?php  
+  }
+  else {
+?>
+        <p class="navbar-text">สวัสดี, 
+		
+
+<div class="dropdown" style="padding-top:3%;">
+<a onclick="myFunction()" class="dropbtn"><?php echo $_SESSION['user']; ?></a>
+  <div id="myDropdown" class="dropdown-content">
+    <a href="#profile">Profile</a>
+    <a href="#corection">Collection</a>
+  </div>
+</div>
+		
+		
+		 <a href="destroy.php">  ออกจากระบบ</a></p>
+<?php
+  }
+?>
+    </ul>
+  </div>
+
+    <!-- LOGO -->
+  <div class="page-header" >
+      <img src="logoVer4.gif" width="300" class="img-responsive">
+  </div>
+ 
+ <!-- NAV BAR -->
 <div align="right" style="margin-right: 0%;margin-left: 0%;margin-bottom:0.5%;">
 <nav class="navbar navbar-default">
   <div class="container-fluid">
@@ -41,7 +148,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="index.php"><b><img src="home.gif" width="14"> Home</b></a></li>
+        <li class="active"><a href="TheKeeper.php"><b><img src="home.gif" width="14"> Home</b></a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><b>Products </b><span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -54,14 +161,39 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
-        <li><a href="#"><b>Login</a></b></li>
+
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
   </div>
-</nav>
+</nav> 
+</div>
+
 </div>  <!-- END CONTAINER CONTENT -->
+<!-- script make dropdown name member  -->
+
+<script>
+/* When the user clicks on the member name, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
 </header>
 
 
