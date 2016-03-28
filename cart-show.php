@@ -6,17 +6,20 @@ include 'connect.php';
 			header("Location:Thekeeper.php");
 			exit();
 		} ?> 
+<head>
 <script type="text/javascript">
 	function newCalQty(id,newid,newQty){
-		var id = id;
-		var newQty = newQty;
-		var newid = newid;
-		if(nQty>0){
-		$.get('cart-ajax.php',{id:id,newid:newid,newQty:newQty},
-			function(data,status)
+		//alert('hi function');
+		//alert('id:' + id + 'newid:' + newid + 'newQty:' + newQty)
+		var aid = id;
+		var anewQty = newQty;
+		var anewid = newid;
+		if(newQty>0){
+		$.get('cart-ajax.php',{id:aid,newid:anewid,newQty:anewQty},
+			function(data)
 			{
 				$('#result').html(data);
-				 alert(data);
+				 //alert(data);
 			}
 			);
 		}
@@ -25,6 +28,7 @@ include 'connect.php';
 	}
 
 </script>
+</head>
 <body> <!-- Content BODY HERE -->
 <div class="container" style="padding-top: 45px;">
 
@@ -39,7 +43,9 @@ include 'connect.php';
 				<th class=""></th>
 			</tr>
 		<?php 
-		$total = 0; $grandTotal = 0; $cartTemp = array(); //ทำตัวแปรเป็นตัวเก็บ array
+		$total = 0; 
+		$grandTotal = 0; 
+		$cartTemp = array(); //ทำตัวแปรเป็นตัวเก็บ array
 
 		for($i=0;$i<=(int)$_SESSION["dataid"];$i++) //ลูปเอาทุกตัวในเซสชั่น
 		{
@@ -78,8 +84,8 @@ include 'connect.php';
 		?>
 			<tr>
 				<td><?php printf($item['Name']); ?></td>
-				<td><?php printf("<input type='number' onchange='newCalQty(%s,%s,this.value)' min='1' value='%s' >",$item['ID'],$item['PID'],$item['QTY']); ?></td>
-				<td><?php printf("<a href='deleteCart.php?dataline=%s '><img src='' class=''>",$item['ID']);?> </td>
+				<td><?php printf("<input type='number' onchange='newCalQty(%s,%s,this.value)' min='0' value='%s' >",$item['ID'],$item['PID'],$item['QTY']); ?></td>
+				<td><?php printf("<a href='cart-delete.php?dataline=%s'><img src='bin.png' class='' width='20px'>",$item['ID']);?> </td>
 				<td><?php printf(number_format($item['price'],2)); ?></td>
 				<td>Baht</td>
 			</tr> 
@@ -92,7 +98,7 @@ include 'connect.php';
 
 		<!-- START Total HTML -->
 		<div class="pull-right">
-			<p>Grand Total <?php printf($grandTotal); ?> Baht</p>
+			<p>Grand Total <?php echo $grandTotal; ?> Baht</p>
 			<p><small>*Shipping not included</small></p>
 			<a href="#"><p>CHECK OUT</p></a>
 		</div>

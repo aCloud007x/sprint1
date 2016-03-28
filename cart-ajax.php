@@ -24,19 +24,19 @@
 	}
 	 array_multisort($edition, SORT_DESC, $volume, SORT_ASC, $arr);
 	    printf("<table cellspacing='1' class='table'>
-			<tr class="" >
-				<th class="">Items</th>
-				<th class="">Quantity</th>
-				<th class=""></th>
-				<th class="">PRICE</th>
-				<th class=""></th>
+			<tr class=''>
+				<th class=''>Items</th>
+				<th class=''>Quantity</th>
+				<th class=''></th>
+				<th class=''>Price</th>
+				<th class=''></th>
 			</tr>");  //อะไรที่อยู่ใต้ result ให้ print ทำออกมาให้หมด
 
 	  foreach ($arr as $item){
 		printf("<tr>");
 		printf("<td>%s</td>",$item['Name']);
-		printf("<td><input type='number' onchange='newCalQty(%s,%s,this.value)' min='1' value='%s' ></td>",$item['ID'],$item['PID'],$item['QTY']);
-		printf("<td><a href='deleteCart.php?dataline=%s '><img src='' class=''></td>",$item['ID']);
+		printf("<td><input type='number' onchange='newCalQty(%s,%s,this.value)' min='0' value='%s' ></td>",$item['ID'],$item['PID'],$item['QTY']);
+		printf("<td><a href='cart-delete.php?dataline=%s'><img src='bin.png' class='' width='20px'></td>",$item['ID']);
 		printf("<td>%s</td>",number_format((float)$item['price'],2));
 		printf("<td>Baht</td>");
 		printf("</tr> ");
