@@ -126,7 +126,7 @@ td a {
 
 	<article>
 	<div class="blue">
-		<?php while($objResult = mysqli_fetch_array($objQuery)) { ?>
+		<?php while($objResult = mysqli_fetch_array($objQuery)) { $ppid=$objResult["Pid"]; ?>
 			<div class="container" style="padding-right: 3%;">
 
 	        		<div class="col-lg-6" align="center">
@@ -145,11 +145,7 @@ td a {
 						<br>
 						
 					</div>
-					<form id="dialog-form" action="cart-add.php" method="POST" >
-						<input type="hidden" name="pid" value="<?php echo $objResult["Pid"]; ?>">
-					 	<input type="hidden" name="quantity" id="dialog-quantity" value="1" min="1">
-					    <button type="submit" style="margin-right:20%;margin-top:5%;font-color:white;" class="btn btn-primary pull-right" data-id=""><span class="glyphicon glyphicon-shopping-cart"> Add to Cart</button>
-					</form>
+					    <a href="<?php printf('cart-add.php?pid=%s',$page);?>"><button type="submit" style="margin-right:20%;margin-top:5%;font-color:white;" class="btn btn-primary pull-right" data-id=""><span class="glyphicon glyphicon-shopping-cart">ADD TO CART</button></a>
 
                         
 

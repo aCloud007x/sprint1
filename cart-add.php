@@ -1,39 +1,32 @@
-<?php
-sleep(1);
-session_start();
+<?php 
+// SET SESSION FOR CART
 
-if(!isset($_POST['pid'])) {
-	exit;
-}
-include "connect.php";
-$pid = $_POST['pid'];
-$quantity = intval($_POST['quantity']);
+ $pid = $_GET["pid"];
+ sleep(1);
+ session_start();
 
-// $sql = "SELECT quantity FROM products WHERE pid = '$pid'";
-// $r = mysqli_query($link, $sql);
-// $pro = mysqli_fetch_array($r);
-// if($pro['quantity'] < $quantity) {
-// 	echo "จำนวนสินค้าในสต๊อกมีไม่เพียงพอกับจำนวนที่ท่านระบุ";
-// 	mysqli_close($link);
-// 	exit;
-// }
+ if(!isset($_SESSION["dataid"])){
+	$_SESSION["dataid"] = 0;
+	$_SESSION["pid"][0] = $pid;
+	$_SESSION["qty"][0] = 1;
+	$_SESSION["price"][0] = 0;
+	$_SESSION["pname"][0] ="";
 
-// $attrs = array();  //คุณลักษณะถูกส่งขึ้นมาแบบอาร์เรย์
-// for($i=0; $i < count($_POST['prop_name']); $i++) { //เชื่อมชื่อและค่าคุณลักษณะด้วย ":"
-// 	$attrs[$i] = $_POST['prop_name'][$i] . ": " . $_POST['prop_val'][$i];
-// }
-// $att = implode(", ", $attrs); //เชื่อมแต่ละคุณลักษณะด้วย "," เช่น สี:ฟ้า,ขนาด:M
-$sid = session_id();
+	header("Location:cart-show.php"); 	
+ }
+ else { //ถ้ามี session อยู่แล้ว > เพิ่มอาร์เรย์เข้าไป
+ 	$max = array_search($pid, $_SESSION["pid"]);
+ 	if((string)$max != ""){
+ 		$_SESSION["qty"][$max] = $_SESSION["qty"][$max]+1;
+ 	}
+ 	else{
+ 		$_SESSION["dataid"] = $_SESSION["dataid"]+1;
+ 		$newMax = $_SESSION["dataid"];
+ 		$_SESSION["pid"][$newMax] = $pid;
+ 		$_SESSION["qty"][$newMax] = 1;
 
-$sql = "REPLACE INTO cart VALUES(
-			'', '$pid', '$quantity', NOW(), '$sid')";
-@mysqli_query($connect, $sql);
-
-//ลบรายการที่เพิ่มลงในรถเข็นมาเกิน 1 วัน (คาดว่าคงไม่ซื้อแล้วหละ)
-$sql = "DELETE FROM cart WHERE DATEDIFF(NOW(), date_shop) > 1";
-@mysqli_query($connect, $sql);
-
-mysqli_close($connect);
+ 	}
+ 	header("Location:cart-show.php");
+ }
 
 ?>
-<script>location.href = "cart-show.php";</script>

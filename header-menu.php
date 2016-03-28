@@ -45,13 +45,14 @@
   color:yellow; background-color:transparent; text-decoration:underline
 }
 /*css drop down member name*/
-.dropbtn > a {
+.dropbtn {
     background-color: #fffff;
     color: black;
     padding: 16px;
     font-size: 16px;
     border: none;
     cursor: pointer;
+	text-decoration:none;
 	
 }
 
@@ -80,7 +81,8 @@
     display: block;
 }
 
-.dropdown a:hover {color: blue;}
+.dropdown a:hover {color: black;
+					text-decoration:none;}
 
 .show {display:block;}
 </style>
@@ -97,7 +99,7 @@
   <!-- Login - Shopping Cart -->
   <div id="login_bar">               
     <ul class="nav" id="login_signup">
-        <li><a href="#"><img src="shopcart.png" width="25" class="img-responsive"></a></li>
+        <li><a href="cart-show.php"><img src="shopcart.png" width="25" class="img-responsive"></a></li>
 <?php 
 if(!isset($_SESSION['user'])) {  
 ?>
