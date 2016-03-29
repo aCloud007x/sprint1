@@ -108,7 +108,7 @@ if($_POST) {
 			setcookie("pwd", "$pwd");
 		//}
 
-		
+		// USE FOR STAR CHECK SESSION
 		 $_SESSION['user'] = $data['Mname'];
 		 $_SESSION['userID'] = $data['Mid'];
 	}

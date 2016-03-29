@@ -1,7 +1,5 @@
 <?php
-session_start ();
 
-include('connect.php');
 $id = $_REQUEST ["Pid"];
 $sql = "SELECT sum(Score),count(Pid) FROM rate  where Pid like '$id' group by Pid ";
 $objQuery = mysqli_query ( $objConnect, $sql );
@@ -50,34 +48,35 @@ $objQuery = mysqli_query ( $objConnect, $sql );
 				}
  }
 			?>
-<div  >
-									
-									<a onclick="calRating(1,'<?=$objResult["Pid"]?>')"  >
-									<?php if($star1==1) {?><img  id="star1" src="img/starnew.png"> 
-									<?php  }elseif ($star05==1){?><img  id="star1" src="img/starhalf.png">
-									<?php }else {?> <img  id="star1" src="img/star.png"><?php }?>
-									</a> 
-									<a onclick="calRating(2,'<?=$objResult["Pid"]?>')"  >
-									<?php if($star2==1) {?><img id="star2" src="img/starnew.png"> 
-									<?php  }elseif ($star15==1){?><img id="star2" src="img/starhalf.png">
-									<?php  }else {?> <img id="star2" src="img/star.png"><?php }?>
-									</a> 
-									<a onclick="calRating(3,'<?=$objResult["Pid"]?>')"  >
-									<?php if($star3==1) {?><img id="star3" src="img/starnew.png"> 
-									<?php  }elseif ($star25==1){?><img id="star3" src="img/starhalf.png">
-									<?php  }else {?> <img id="star3" src="img/star.png"><?php }?>
-									</a>  
-									<a onclick="calRating(4,'<?=$objResult["Pid"]?>')"  >
-									<?php if($star4==1) {?><img id="star4" src="img/starnew.png"> 
-									<?php  }elseif ($star35==1){?><img id="star4" src="img/starhalf.png">
-									<?php  }else {?> <img id="star4" src="img/star.png"><?php }?>
-									</a> 
-									<a onclick="calRating(5,'<?=$objResult["Pid"]?>')" >
-									<?php if($star5==1) {?><img id="star5" src="img/starnew.png"> 
-									<?php  }elseif ($star45==1){?><img id="star5" src="img/starhalf.png">
-									<?php  }else {?> <img id="star5" src="img/star.png"  ><?php }?>
-									</a>
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<span id="showText" style="color: yellow;font-size: 18px;border: 2;"></span>
-						</div>
+<div>
+	<h4><span><b>Rate:</b></h4>
+	<a onclick="calRating(1,'<?=$objResult["Pid"]?>')"  >
+	<?php if($star1==1) {?><img  id="star1" src="img/starnew.png" alt="new" onmouseover="starOver('star1')" onmouseout="starOut('star1')"> 
+	<?php  }elseif ($star05==1){?><img  id="star1" src="img/starhalf.png" alt="half" onmouseover="starOver('star1')" onmouseout="starOut('star1')">
+	<?php }else {?> <img  id="star1" src="img/star.png" alt="" onmouseover="starOver('star1')" onmouseout="starOut('star1')"><?php }?>
+	</a> 
+	<a onclick="calRating(2,'<?=$objResult["Pid"]?>')">
+	<?php if($star2==1) {?><img id="star2" src="img/starnew.png" alt="new" onmouseover="starOver('star2')" onmouseout="starOut('star2')"> 
+	<?php  }elseif ($star15==1){?><img id="star2" src="img/starhalf.png" alt="half" onmouseover="starOver('star2')" onmouseout="starOut('star2')">
+	<?php  }else {?> <img id="star2" src="img/star.png" alt="" onmouseover="starOver('star2')" onmouseout="starOut('star2')"><?php }?>
+	</a> 
+	<a onclick="calRating(3,'<?=$objResult["Pid"]?>')">
+	<?php if($star3==1) {?><img id="star3" src="img/starnew.png" alt="new" onmouseover="starOver('star3')" onmouseout="starOut('star3')"> 
+	<?php  }elseif ($star25==1){?><img id="star3" src="img/starhalf.png" alt="half" onmouseover="starOver('star3')" onmouseout="starOut('star3')">
+	<?php  }else {?> <img id="star3" src="img/star.png" alt="" onmouseover="starOver('star3')" onmouseout="starOut('star3')"><?php }?>
+	</a>  
+	<a onclick="calRating(4,'<?=$objResult["Pid"]?>')" >
+	<?php if($star4==1) {?><img id="star4" src="img/starnew.png" alt="new"  onmouseover="starOver('star4')" onmouseout="starOut('star4')"> 
+	<?php  }elseif ($star35==1){?><img id="star4" src="img/starhalf.png" alt="half"  onmouseover="starOver('star4')" onmouseout="starOut('star4')">
+	<?php  }else {?> <img id="star4" src="img/star.png" alt=""  onmouseover="starOver('star4')" onmouseout="starOut('star4')"><?php }?>
+	</a> 
+	<a onclick="calRating(5,'<?=$objResult["Pid"]?>')">
+	<?php if($star5==1) {?><img id="star5" src="img/starnew.png" alt="new"  onmouseover="starOver('star5')" onmouseout="starOut('star5')"> 
+	<?php  }elseif ($star45==1){?><img id="star5" src="img/starhalf.png" alt="half"  onmouseover="starOver('star5')" onmouseout="starOut('star5')">
+	<?php  }else {?> <img id="star5" src="img/star.png" alt=""  onmouseover="starOver('star5')" onmouseout="starOut('star5')"><?php }?>
+	</a>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<span id="showText" style="color: yellow;font-size: 18px;border: 2;"></span>
+	</span>
+</div>
 

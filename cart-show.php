@@ -26,8 +26,50 @@ include 'connect.php';
 
 </script>
 <style>
+
+/*กำหนดขนาดของช่องจำนวนสินค้า*/
 input[type="number"] {
    width:50px;
+}
+
+.buttonc {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #1E90FF;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 18px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.buttonc span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.buttonc span:after {
+  content: ' >>';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.buttonc:hover span {
+  padding-right: 40px;
+}
+
+.buttonc:hover span:after {
+  opacity: 1;
+  right: 0;
 }
 </style>
 </head>
@@ -105,10 +147,10 @@ input[type="number"] {
 		</table><br>
 
 		<!-- START Total HTML -->
-		<div class='pull-right text-right'>
+		<div id='totalsection' class='pull-right text-right'>
 			<p><b>Grand Total</b> <?php echo $grandTotal; ?> <b>Baht</b><br><small style="color:red;">*Shipping cost not included</small></p>
 			<p></p>
-			<a href='#'><button>CHECK OUT</button></a>
+			<a href='#'><button class='buttonc' style='vertical-align:middle'><span>Check out </span></button></a>
 		</div>
 		<!-- END Total HTML -->
 

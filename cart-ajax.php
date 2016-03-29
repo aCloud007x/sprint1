@@ -3,8 +3,9 @@
 	$sess_ID = $_GET['id'];
 	$sess_qty = $_GET['newQty'];
 	$sess_name = $_GET['newid'];
+	if($sess_qty==0){ $_SESSION["qty"][$sess_ID]=0; }
+	else{$_SESSION["qty"][$sess_ID] = $sess_qty; } //เปลี่ยน quantity ของสินค้านั้นใหม่ ตามที่กดเปลี่ยน
 
-	$_SESSION["qty"][$sess_ID] = $sess_qty; //เปลี่ยน quantity ของสินค้านั้นใหม่ ตามที่กดเปลี่ยน
 
 	$arr = array();
 	$total=0;
@@ -47,8 +48,8 @@
 
 	}
 		printf("</table><br>");
-		printf("<div class='pull-right text-right'>
+		printf("<div id='totalsection' class='pull-right text-right'>
 			<p><b>Grand Total</b> %s <b>Baht</b><br><small style='color:red;'>*Shipping cost not included</small></p>
 			<p></p>
-			<a href='#'><button>CHECK OUT</button></a>",$total);
+			<a href='#'><button class='buttonc' style='vertical-align:middle'><span>Check out </span></button></a>",$total);
 ?>

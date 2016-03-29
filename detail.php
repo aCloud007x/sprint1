@@ -110,15 +110,14 @@ td a {
 						<h4><span><b>Description:</b></span> <?php echo $objResult["Pdetail"];?></h4>
 						<h4><span><b>Size:</b></span> <?php echo $objResult["Psize"];?></h4>
 						<h4><span><b>Price:</b></span> <?php echo $objResult["Pprice"];?> baht</h4>
+						 <?php include('star.php'); ?>
 						<br>
 						
 					</div>
-                    <?php include('star.php'); ?>
-				<?php include('s.php');?> 
-                    
-                    
-						<input type="hidden" id="memberID" value="<?php echo $_SESSION['userID']; ?>"/>
-                     <button style="margin-right:20%;margin-top:5%;" type="button" id="btn-add-to-cart"class="btn btn-primary btn-sm pull-right"><span class="glyphicon glyphicon-shopping-cart"> </span> Add to Cart </button>
+					
+					<input type="hidden" id="memberID" value="<?php echo $_SESSION['userID']; ?>"/>
+                      <a href="<?php if(isset($_SESSION['user'])){printf('cart-add.php?pid=%s',$page);}else{echo '#';}?>">
+						 <button type="submit" style="margin-right:20%;margin-top:5%;font-color:white;" class="btn btn-primary pull-right" data-id=""><span class="glyphicon glyphicon-shopping-cart">ADD TO CART</button></a>
 	</div>
   
    
@@ -163,8 +162,8 @@ td a {
 
 
 
-</div>
+</div></div>
 <?php include('jsstar.php'); ?> 
 </body> <!-- END BODY -->
-</div> <!-- zoom function -->
+ <!-- zoom function -->
 <?php include('footer.php'); ?> <!-- FOOT -->
