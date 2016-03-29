@@ -4,7 +4,7 @@
 
 
 			<br>
-			<center><img src="highLight.gif" width="860" class="img-responsive"></center>
+			<center><img src="highLight.gif" width="350" class="img-responsive"></center>
 			<br><br>
 			<?php include('slide_show.php'); ?> 
 
@@ -13,7 +13,7 @@
 	<br>
 	<div class="container" style="padding-top: 30px;background-color: #FAFAFA;">
 		
-			<center><img src="popular.gif" width="680" class="img-responsive"></center>
+			<center><img src="popular.gif" width="359" class="img-responsive"></center>
 			<br>
 			<?php include('product.php'); ?> 
 	</div>

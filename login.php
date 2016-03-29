@@ -110,6 +110,7 @@ if($_POST) {
 
 		
 		 $_SESSION['user'] = $data['Mname'];
+		 $_SESSION['userID'] = $data['Mid'];
 	}
 }
 mysqli_close($connect);

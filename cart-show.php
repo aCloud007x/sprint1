@@ -1,5 +1,5 @@
 <?php 	
-
+ob_start();
 include('header-menu.php');  //<!-- HEAD -->
 include 'connect.php';
 		?> 
@@ -25,25 +25,30 @@ include 'connect.php';
 	}
 
 </script>
+<style>
+input[type="number"] {
+   width:50px;
+}
+</style>
 </head>
 <body> <!-- Content BODY HERE -->
 <div class="container" style="padding-top: 45px;">
 		<?php 
 		if(isset($_SESSION['user'])){
 			if(!isset($_SESSION["dataid"])){
-			header("Location:Thekeeper.php");
-			exit();
+			// 	echo"<meta http-equiv='refresh' content='3;url=TheKeeper.php'>";
+				header("Location:Thekeeper.php");
+				exit();
 		} 
 		?>
-	<br>
+	
 	<section id="result">
-		<table cellspacing="1" class="table center">
-			<tr class="" >
-				<th class="">Items</th>
-				<th class="">Quantity</th>
-				<th class=""></th>
-				<th class="">Price</th>
-				<th class=""></th>
+		<table cellspacing="1" class="table table-hover text-center">
+			<tr class="info text-center" >
+				<th class="text-center">Items</th>
+				<th class="text-center">Quantity</th>
+				<th class="text-center">Price</th>
+				<th class="text-center"></th>
 			</tr>
 		<?php 
 		$total = 0; 
@@ -87,10 +92,10 @@ include 'connect.php';
 		?>
 			<tr>
 				<td><?php printf($item['Name']); ?></td>
-				<td><?php printf("<input type='number' onchange='newCalQty(%s,%s,this.value)' min='0' value='%s' >",$item['ID'],$item['PID'],$item['QTY']); ?></td>
-				<td><?php printf("<a href='cart-delete.php?dataline=%s'><img src='bin.png' class='' width='20px'>",$item['ID']);?> </td>
+				<td><?php printf("<input type='number' onchange='newCalQty(%s,%s,this.value)' min='0' value='%s' >",$item['ID'],$item['PID'],$item['QTY']); ?> &nbsp;&nbsp;	<?php printf("<a href='cart-delete.php?dataline=%s'><img src='bin.png' class='' width='20px'>",$item['ID']);?></td>
+				
 				<td><?php printf(number_format($item['price'],2)); ?></td>
-				<td>Baht</td>
+				<td class="text-left">Baht</td>
 			</tr> 
 		<?php 
 		}
@@ -100,10 +105,10 @@ include 'connect.php';
 		</table><br>
 
 		<!-- START Total HTML -->
-		<div class="pull-right">
-			<p>Grand Total <?php echo $grandTotal; ?> Baht</p>
-			<p><small>*Shipping not included</small></p>
-			<a href="#"><p>CHECK OUT</p></a>
+		<div class='pull-right text-right'>
+			<p><b>Grand Total</b> <?php echo $grandTotal; ?> <b>Baht</b><br><small style="color:red;">*Shipping cost not included</small></p>
+			<p></p>
+			<a href='#'><button>CHECK OUT</button></a>
 		</div>
 		<!-- END Total HTML -->
 

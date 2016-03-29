@@ -23,30 +23,32 @@
     			$edition[$key] = $row['QTY'];
 	}
 	 array_multisort($edition, SORT_DESC, $volume, SORT_ASC, $arr);
-	    printf("<table cellspacing='1' class='table'>
-			<tr class=''>
-				<th class=''>Items</th>
-				<th class=''>Quantity</th>
-				<th class=''></th>
-				<th class=''>Price</th>
-				<th class=''></th>
+	    printf("<table cellspacing='1' class='table table-hover text-center'>
+			<tr class='info text-center'>
+				<th class='text-center'>Items</th>
+				<th class='text-center'>Quantity</th>
+				<th class='text-center'>Price</th>
+				<th class='text-center'></th>
 			</tr>");  //อะไรที่อยู่ใต้ result ให้ print ทำออกมาให้หมด
 
 	  foreach ($arr as $item){
 		printf("<tr>");
 		printf("<td>%s</td>",$item['Name']);
-		printf("<td><input type='number' onchange='newCalQty(%s,%s,this.value)' min='0' value='%s' ></td>",$item['ID'],$item['PID'],$item['QTY']);
-		printf("<td><a href='cart-delete.php?dataline=%s'><img src='bin.png' class='' width='20px'></td>",$item['ID']);
+		printf("<td><input type='number' onchange='newCalQty(%s,%s,this.value)' min='0' value='%s' >",$item['ID'],$item['PID'],$item['QTY']);
+		printf(" &nbsp;&nbsp; <a href='cart-delete.php?dataline=%s'><img src='bin.png' class='' width='20px'></td>",$item['ID']);
 		printf("<td>%s</td>",number_format((float)$item['price'],2));
-		printf("<td>Baht</td>");
+		printf("<td class='text-left'>Baht</td>");
 		printf("</tr> ");
 		//printf("<tr>");
-		$total = $total+($item['price']*$item['QTY']);
+		if($sess_qty==0){ $total=0 ;}
+		else{
+		$total = $total+($item['price']*$item['QTY']);}
+
 
 	}
 		printf("</table><br>");
-		printf("<div class='pull-right'>
-			<p>Grand Total %s Baht</p>
-			<p><small>*Shipping not included</small></p>
-			<a href='#'><p>CHECK OUT</p></a></div>",$total);
+		printf("<div class='pull-right text-right'>
+			<p><b>Grand Total</b> %s <b>Baht</b><br><small style='color:red;'>*Shipping cost not included</small></p>
+			<p></p>
+			<a href='#'><button>CHECK OUT</button></a>",$total);
 ?>
