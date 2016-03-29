@@ -87,10 +87,10 @@ if($_POST) {
 		$sql = "UPDATE member SET verify = '' 
 		 			WHERE  email = '$email' AND verify = '$code'";
 					
-	 	$rs = mysqli_query($link, $sql);
+	 	$rs = mysqli_query($connect, $sql);
 		
 		//ถ้าเกิดการเปลี่ยนแปลง แสดงว่าใส่รหัสถูกต้อง
-		if(mysqli_affected_rows($link) == 0) {
+		if(mysqli_affected_rows($connect) == 0) {
 			$err = "ท่านใส่อีเมลหรือรหัสยืนยันไม่ถูกต้อง";
 		}
 		else {
@@ -102,7 +102,7 @@ if($_POST) {
 	else if($target == "re-code") {
 		//กรณีนี้เราต้องอ่านรหัสจากตาราง แล้วส่งไปทางอีเมล
 		$sql = "SELECT verify FROM member WHERE email = '$email'";
-		$rs = mysqli_query($link, $sql);
+		$rs = mysqli_query($connect, $sql);
 		$data = mysqli_fetch_array($rs);
 		
 		if(mysqli_num_rows($rs)==0) {  

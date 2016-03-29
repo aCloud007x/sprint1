@@ -15,6 +15,9 @@
 <script src="js/js/jquery.form.min.js"> </script>
 <script src="js/js/jquery.blockUI.js"> </script>
 
+<!-- <script src="jstarbox.js"></script>
+<link href="css/jstarbox.css" rel="stylesheet"> -->
+
 <script type="text/javascript"></script>
 	
 <style>
@@ -142,10 +145,11 @@ td a {
 						<h4><span><b>Description:</b></span> <?php echo $objResult["Pdetail"];?></h4>
 						<h4><span><b>Size:</b></span> <?php echo $objResult["Psize"];?></h4>
 						<h4><span><b>Price:</b></span> <?php echo $objResult["Pprice"];?> baht</h4>
+						<div id="starr"></div>
 						<br>
 						
 					</div>
-					    <a href="<?php printf('cart-add.php?pid=%s',$page);?>"><button type="submit" style="margin-right:20%;margin-top:5%;font-color:white;" class="btn btn-primary pull-right" data-id=""><span class="glyphicon glyphicon-shopping-cart">ADD TO CART</button></a>
+					    <a href="<?php if(isset($_SESSION['user'])){printf('cart-add.php?pid=%s',$page);}else{echo '#';}?>"><button type="submit" style="margin-right:20%;margin-top:5%;font-color:white;" class="btn btn-primary pull-right" data-id=""><span class="glyphicon glyphicon-shopping-cart">ADD TO CART</button></a>
 
                         
 

@@ -2,10 +2,7 @@
 
 include('header-menu.php');  //<!-- HEAD -->
 include 'connect.php';
-		if(!isset($_SESSION["dataid"])){
-			header("Location:Thekeeper.php");
-			exit();
-		} ?> 
+		?> 
 <head>
 <script type="text/javascript">
 	function newCalQty(id,newid,newQty){
@@ -31,7 +28,13 @@ include 'connect.php';
 </head>
 <body> <!-- Content BODY HERE -->
 <div class="container" style="padding-top: 45px;">
-
+		<?php 
+		if(isset($_SESSION['user'])){
+			if(!isset($_SESSION["dataid"])){
+			header("Location:Thekeeper.php");
+			exit();
+		} 
+		?>
 	<br>
 	<section id="result">
 		<table cellspacing="1" class="table center">
@@ -108,6 +111,10 @@ include 'connect.php';
 	<br>
 	<?php mysqli_close($connect); ?>
 
+
+		<?php 
+		}else{ echo '<div class="navbar navbar-danger" align="center" style="font-size:35px;">Please <a href="login.php">Login..</a></div>';}
+		?>
 </div>
 </body> <!-- END BODY -->
 <?php include('footer.php'); ?> <!-- FOOT -->
