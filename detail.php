@@ -7,18 +7,10 @@
 <script src="js/jquery.fs.zoomer.js"></script>
 <script src="ie/jquery.fs.zoetrope.min.js"></script>
 
-<link href="js/js/jquery-ui.min.css" rel="stylesheet">
-<!-- 
-<script src="js/js/jquery-2.1.1.min.js"> </script>
- -->
-<script src="js/js/jquery-ui.min.js"> </script>
-<script src="js/js/jquery.form.min.js"> </script>
-<script src="js/js/jquery.blockUI.js"> </script>
-
-<!-- <script src="jstarbox.js"></script>
-<link href="css/jstarbox.css" rel="stylesheet"> -->
 
 <script type="text/javascript"></script>
+
+
 	
 <style>
 .demo .container .col-lg-6 .zoomer_wrapper {
@@ -56,7 +48,6 @@ td a {
 
 </style>
 	<script>
-
 		$(document).ready(function() {
 			$(".demo .zoomer_basic").zoomer();
 
@@ -82,32 +73,6 @@ td a {
 				$(".demo .load_zoomer_tiled").off("click");
 			});
 		});
-
-		$(document).on('click', 'button#btn-add-to-cart', function() {
-
-				// $.ajax({
-				// type: 'post',
-				// url: 'cart-add.php',
-				// data: $('#dialog-form').serializeArray(),
-				// dataType: 'html',
-				// beforeSend: function() {
-				// 	$('#dialog').block({message:'<h3>กำลังหยิบใส่รถเข็น...</h3>'});
-				// },
-				// success: function(result) {
-				// 	if(result.length > 0) {
-				// 		$('#dialog').unblock();
-				// 		alert(result);
-				// 	}
-				// 	else {
-				// 		cartCount();
-				// 		$('#dialog').block({message:'<h3>เพิ่มสินค้าในรถเข็นแล้ว...</h3>', timeout:2000, showOverlay:false, 
-				// 		 							css: {padding:'2px 20px', background:'#ffc', color:'green', width: 'auto'}});
-				// 		location.href = "order-cart.php";
-				// 		}
-				// 	}
-				// });
-				// alert("Hi");
-		});
 	</script>
 <!-- end zoom function -->
 <!-- HEAD -->
@@ -129,7 +94,7 @@ td a {
 
 	<article>
 	<div class="blue">
-		<?php while($objResult = mysqli_fetch_array($objQuery)) { $ppid=$objResult["Pid"]; ?>
+		<?php while($objResult = mysqli_fetch_array($objQuery)) { ?>
 			<div class="container" style="padding-right: 3%;">
 
 	        		<div class="col-lg-6" align="center">
@@ -145,13 +110,17 @@ td a {
 						<h4><span><b>Description:</b></span> <?php echo $objResult["Pdetail"];?></h4>
 						<h4><span><b>Size:</b></span> <?php echo $objResult["Psize"];?></h4>
 						<h4><span><b>Price:</b></span> <?php echo $objResult["Pprice"];?> baht</h4>
-						<h4><span><b>Rate:</b></span> <?php include('star.php'); ?>
 						<br>
+						
 					</div>
-
-					    <a href="<?php if(isset($_SESSION['user'])){printf('cart-add.php?pid=%s',$page);}else{echo '#';}?>"><button type="submit" style="margin-right:20%;margin-top:5%;font-color:white;" class="btn btn-primary pull-right" data-id=""><span class="glyphicon glyphicon-shopping-cart">ADD TO CART</button></a>
-
-					</div>
+                    <?php include('star.php'); ?>
+				<?php include('s.php');?> 
+                    
+                    
+						<input type="hidden" id="memberID" value="<?php echo $_SESSION['userID']; ?>"/>
+                     <button style="margin-right:20%;margin-top:5%;" type="button" id="btn-add-to-cart"class="btn btn-primary btn-sm pull-right"><span class="glyphicon glyphicon-shopping-cart"> </span> Add to Cart </button>
+	</div>
+  
    
 			</div>
 		<?php } ?>
@@ -195,6 +164,7 @@ td a {
 
 
 </div>
+<?php include('jsstar.php'); ?> 
 </body> <!-- END BODY -->
 </div> <!-- zoom function -->
 <?php include('footer.php'); ?> <!-- FOOT -->
