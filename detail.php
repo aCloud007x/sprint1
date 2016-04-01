@@ -30,6 +30,7 @@
 	box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
+div .nohover>a:hover{ text-decoration-line: none; }
 
 div.blue {
 	background-color: #EFFBFB;

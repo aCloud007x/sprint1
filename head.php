@@ -5,13 +5,12 @@
 <!-- Mobile viewport optimized: h5bp.com/viewport -->
   <meta name="viewport" content="width=device-width">
 <!-- CSS -->
-    <link href="bootstrap/css/bootstrap.css" rel="stylesheet" />   
-    <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />   
+    <!-- <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet" />
+ -->
 
 
-<!--Scripts-->
- <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
- <script src="bootstrap/js/bootstrap.js" type="text/javascript"></script>
+ <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 <!-- end bootstrap -->
 
 <!--[if lt IE 9] >

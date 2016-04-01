@@ -51,5 +51,5 @@
 		printf("<div id='totalsection' class='pull-right text-right'>
 			<p><b>Grand Total</b> %s <b>Baht</b><br><small style='color:red;'>*Shipping cost not included</small></p>
 			<p></p>
-			<a href='#'><button class='buttonc' style='vertical-align:middle'><span>Check out </span></button></a>",$total);
+			<a href='order-form.php'><button class='buttonc' style='vertical-align:middle'><span>Check out </span></button></a>",$total);
 ?>

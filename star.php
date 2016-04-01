@@ -48,7 +48,7 @@ $objQuery = mysqli_query ( $objConnect, $sql );
 				}
  }
 			?>
-<div>
+<div id="nohover">
 	<h4><span><b>Rate:</b></h4>
 	<a onclick="calRating(1,'<?=$objResult["Pid"]?>')"  >
 	<?php if($star1==1) {?><img  id="star1" src="img/starnew.png" alt="new" onmouseover="starOver('star1')" onmouseout="starOut('star1')"> 
