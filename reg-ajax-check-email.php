@@ -4,9 +4,10 @@
 if(isset($_GET['username']))
 {
 	$mail = $_GET['username'];
+	// $sql = "SELECT Musername FROM member WHERE Musername='$mail'";
 	$sql = "SELECT Musername FROM member WHERE Musername='$mail'";
 	$objQuery = mysqli_query($connect,$sql);
-	sleep(1);
+	sleep(2);
 	if(mysqli_num_rows($objQuery))
 	{
 		echo 'denied';

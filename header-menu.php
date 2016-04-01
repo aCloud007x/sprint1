@@ -85,6 +85,12 @@
 					text-decoration:none;}
 
 .show {display:block;}
+
+
+a #regis :hover{color:red;}
+	
+
+
 </style>
 
 </head>
@@ -94,12 +100,12 @@
 <header class="bg">
   
   <!-- CONTAINER CONTENT -->
-  <div class="container " style="padding-top: 45px;">
+  <div class="container " style="padding-top: 41px;">
 
   <!-- Login - Shopping Cart -->
   <div id="login_bar">               
     <ul class="nav" id="login_signup">
-        <li><a href="cart-show.php"><img src="shopcart.png" width="25" class="img-responsive"></a></li>
+        <li><a href="#"><img src="shopcart.png" width="25" class="img-responsive"></a></li>
 <?php 
 if(!isset($_SESSION['user'])) {  
 ?>
@@ -108,27 +114,33 @@ if(!isset($_SESSION['user'])) {
   }
   else {
 ?>
-        <p class="navbar-text">สวัสดี, 
+
+        <p class="navbar-text">สวัสดี,
 		
 
 <div class="dropdown" style="padding-top:3%;">
-<a onclick="myFunction()" class="dropbtn"><?php echo $_SESSION['user']; ?></a>
+<a onclick="myFunction()" class="dropbtn"><?php $name=$_SESSION['user']; printf("%s",$name); ?></a>
   <div id="myDropdown" class="dropdown-content">
     <a href="#profile">Profile</a>
     <a href="#corection">Collection</a>
   </div>
 </div>
 		
-		
-		 <a href="destroy.php">  ออกจากระบบ</a></p>
+		  
+		 <a href="destroy.php">  ออกจากระบบ</a>&nbsp;&nbsp;&nbsp;</p>
 <?php
   }
 ?>
     </ul>
   </div>
+  
+  <!--Link to Register -->
+<?php if(!isset($_SESSION['user'])) {   ?>
+ <a id="regis" href="reg.php" style="position:absolute;right:9.75%;top:15%;text-decoration:none;font-weight:bold;">Register</a>
+<?php  }  ?>
 
     <!-- LOGO -->
-  <div class="page-header" >
+  <div class="page-header" style="border-width: 0px;">
       <img src="logoVer4.gif" width="300" class="img-responsive">
   </div>
  

@@ -89,6 +89,7 @@ if($_POST) {
 	$sql = "SELECT * FROM member  
 		 		WHERE  Musername = '$user' AND Mpassword = '$pwd'";
 	
+	$err = '';
 	$rs = mysqli_query($connect, $sql);
 	$data = mysqli_fetch_array($rs);
 	if(mysqli_num_rows($rs) == 0) {
@@ -110,7 +111,9 @@ if($_POST) {
 
 		// USE FOR STAR CHECK SESSION
 		 $_SESSION['user'] = $data['Mname'];
-		 $_SESSION['userID'] = $data['Mid'];
+		 $_SESSION['userID'] = $data['Mid']; //for Rating Star
+		 header( "location: TheKeeper.php" );
+ 		exit(1); 
 	}
 }
 mysqli_close($connect);
@@ -129,8 +132,10 @@ mysqli_close($connect);
     	<input type="password" name="pwd" placeholder="รหัสผ่าน" required><br>
         <!--<input type="checkbox" name="save_account">
          <span>เก็บข้อมูลไว้ในเครื่องนี้</span><br> -->
-         <a href="#" id="forget">ลืมรหัสผ่าน</a> 
+        <a href="#" id="forget">ลืมรหัสผ่าน</a> 
+    	
     	<button>เข้าสู่ระบบ</button>  
+
     </form>
     </fieldset>
  <?php  
