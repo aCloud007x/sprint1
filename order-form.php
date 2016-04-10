@@ -1,4 +1,8 @@
-<?php session_start();
+<?php 
+// เพื่อป้องกันการเข้าถึงหน้านี้โดยตรง เปิดโค้ดนี้
+// if(!$_POST){ exit; }
+
+session_start();
   include 'connect.php'; // $connect
   $name = $_SESSION['user'];
   // echo $name;
@@ -75,31 +79,31 @@ alert('COMPLETE');
         <div class="form-group row">
           <label for="inputName" class="col-sm-2 form-control-label"><b>Name</b></label>
           <div class="col-sm-8">
-            <input type="Name" class="form-control" id="inputName1" placeholder="Firstname Lastname" value="<?php echo $res['Mname']; ?>">
+            <input type="Name" class="form-control" id="inputName1" placeholder="Firstname Lastname" value="<?php echo $res['Mname']; ?>" required>
           </div>
         </div>
         <div class="form-group row">
           <label for="inputAddress" class="col-sm-2 form-control-label"><b>Address</b></label>
           <div class="col-sm-8">
-            <input type="Address" class="form-control" id="inputAddress1" placeholder="Address" value="<?php echo $res['Maddress']; ?>">
+            <input type="Address" class="form-control" id="inputAddress1" placeholder="Address" value="<?php echo $res['Maddress']; ?>" required>
           </div>
         </div>
         <div class="form-group row">
           <label for="inputStateProvince" class="col-sm-2 form-control-label"><b>State/Province</b></label>
           <div class="col-sm-8">
-            <input type="StateProvince" class="form-control" id="inputStateProvince1" placeholder="State/Province" value="<?php echo $res['Mstate']; ?>">
+            <input type="StateProvince" class="form-control" id="inputStateProvince1" placeholder="State/Province" value="<?php echo $res['Mstate']; ?>" required>
           </div>
         </div>
         <div class="form-group row">
           <label for="inputCity" class="col-sm-2 form-control-label"><b>City</b></label>
           <div class="col-sm-8">
-            <input type="City" class="form-control" id="inputCity1" placeholder="City" value="<?php echo $res['Mcity']; ?>">
+            <input type="City" class="form-control" id="inputCity1" placeholder="City" value="<?php echo $res['Mcity']; ?>" required>
           </div>
         </div>
         <div class="form-group row">
           <label for="inputPostalCode" class="col-sm-2 form-control-label"><b>Postal Code</b></label>
           <div class="col-sm-8">
-            <input type="PostalCode" class="form-control" id="inputPostalCode1" placeholder="Postal Code" value="<?php echo $res['Mpostalcode']; ?>">
+            <input type="PostalCode" class="form-control" id="inputPostalCode1" placeholder="Postal Code" value="<?php echo $res['Mpostalcode']; ?>" required>
           </div>
         </div>
 
@@ -114,37 +118,37 @@ alert('COMPLETE');
     <div class="col-sm-8">
       <div class="checkbox">
         <label for="chkPassport">
-          <input type="checkbox" id="chkPassport" onclick="myFunction()">Same as shipping address
+          <input type="checkbox" id="chkPassport" onclick="myFunction()" required>Same as shipping address
         </label><br><br><br>
 
         <div class="form-group row">
           <label for="inputName" class="col-sm-2 form-control-label"><b>Name</b></label>
           <div class="col-sm-8">
-            <input type="Name" class="form-control" id="inputName2" placeholder="Firstname Lastname">
+            <input type="Name" class="form-control" id="inputName2" placeholder="Firstname Lastname" required>
           </div>
         </div>
         <div class="form-group row">
           <label for="inputAddress" class="col-sm-2 form-control-label"><b>Address</b></label>
           <div class="col-sm-8">
-            <input type="Address" class="form-control" id="inputAddress2" placeholder="Address">
+            <input type="Address" class="form-control" id="inputAddress2" placeholder="Address" required>
           </div>
         </div>
         <div class="form-group row">
           <label for="inputStateProvince" class="col-sm-2 form-control-label"><b>State/Province</b></label>
           <div class="col-sm-8">
-            <input type="StateProvince" class="form-control" id="inputStateProvince2" placeholder="State/Province">
+            <input type="StateProvince" class="form-control" id="inputStateProvince2" placeholder="State/Province" required>
           </div>
         </div>
         <div class="form-group row">
           <label for="inputCity" class="col-sm-2 form-control-label"><b>City</b></label>
           <div class="col-sm-8">
-            <input type="City" class="form-control" id="inputCity2" placeholder="City">
+            <input type="City" class="form-control" id="inputCity2" placeholder="City" required>
           </div>
         </div>
         <div class="form-group row">
           <label for="inputPostalCode" class="col-sm-2 form-control-label"><b>Postal Code</b></label>
           <div class="col-sm-8">
-            <input type="PostalCode" class="form-control" id="inputPostalCode2" placeholder="Postal Code">
+            <input type="PostalCode" class="form-control" id="inputPostalCode2" placeholder="Postal Code" required>
           </div>
         </div>
 

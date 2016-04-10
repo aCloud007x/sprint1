@@ -105,7 +105,7 @@ a #regis :hover{color:red;}
   <!-- Login - Shopping Cart -->
   <div id="login_bar">               
     <ul class="nav" id="login_signup">
-        <li><a href="#"><img src="shopcart.png" width="25" class="img-responsive"></a></li>
+        <li><a href="cart-show.php"><img src="shopcart.png" width="25" class="img-responsive"></a></li>
 <?php 
 if(!isset($_SESSION['user'])) {  
 ?>

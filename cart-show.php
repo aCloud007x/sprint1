@@ -4,7 +4,9 @@ include('header-menu.php');  //<!-- HEAD -->
 include 'connect.php';
 		?> 
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script type="text/javascript">
+
 	function newCalQty(id,newid,newQty){
 		//alert('hi function');
 		//alert('id:' + id + 'newid:' + newid + 'newQty:' + newQty)
@@ -23,6 +25,12 @@ include 'connect.php';
 
 
 	}
+
+	// $('button#next').click(function()	{
+	// 	$('form').attr('action','order-form.php');
+	// 	$('form').submit();
+	// });
+
 
 </script>
 <style>
@@ -150,7 +158,11 @@ input[type="number"] {
 		<div id='totalsection' class='pull-right text-right'>
 			<p><b>Grand Total</b> <?php echo $grandTotal; ?> <b>Baht</b><br><small style="color:red;">*Shipping cost not included</small></p>
 			<p></p>
-			<a href='order-form.php'><button class='buttonc' style='vertical-align:middle'><span>Check out </span></button></a>
+
+			<form method='post' action='order-form.php'>
+			<input type='hidden' name='action'> </input>
+			<button class='buttonc' id='next' style='vertical-align:middle'><span>Check out </span></button>
+						</form>
 		</div>
 		<!-- END Total HTML -->
 

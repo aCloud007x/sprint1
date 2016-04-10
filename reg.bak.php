@@ -70,9 +70,6 @@ body{
     width: 255px;
     border-radius: 6px;
   }
-  .no-close .ui-dialog-titlebar-close {
-  display: none;
-}
 </style>
 <script>
 	function checkUsername() {
@@ -118,14 +115,14 @@ body{
 <!-- BEGIN FORM -->
 
 <center>
-    <form id="regform" name="regform" action="reg-ajax-check-reg.php" method="post">
+    <form id="regform" name="regform" >
       <h1><img src="account.png"> Create your account</h1>
       <hr width="70%"> 
       <table style="margin-top:40px; margin-bottom:40px;">
          <tr>
           <td><div class="one">Username: </div></td>
-          <td><div class="two"><input type="email" name="txtUsername" id="txtUsername" onChange="checkUsername()" onBlur="checkUsername()" 
-           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required /></div></td>
+          <td><div class="two"><input type="email" name="txtUsername" id="txtUsername" onblur="checkUsername()" 
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required /></div></td>
         </tr>
        <tr>
           <td><div class="one">Password: </div></td>
@@ -154,27 +151,27 @@ body{
         </tr>
         <tr>
           <td><div class="one">Answer: </div></td>
-          <td><div class="two"><input type="text" name="txtAnswer" id="txtAnswer" pattern="[\d|\w|\S]+"  required></div></td>
+          <td><div class="two"><input type="messages" name="txtAnswer" id="txtAnswer" pattern="[\d|\w|\S]+"  required></div></td>
       </tr>
       <tr>
           <td><div class="one">Firstname: </div></td>
-          <td><div class="two"><input type="text" name="txtFirstname" id="txtFirstname" pattern="[a-zA-Z\s]+"  required></div></td>
+          <td><div class="two"><input type="messages" name="txtFirstname" id="txtFirstname" pattern="[\d|\w|\S]+"  required></div></td>
       </tr>
       <tr>
           <td><div class="one">Lastname: </div></td>
-          <td><div class="two"><input type="text" name="txtLastname" id="txtLastname" pattern="[a-zA-Z\s]+"  required></div></td>
+          <td><div class="two"><input type="messages" name="txtLastname" id="txtLastname" pattern="[\d|\w|\S]+"  required></div></td>
       </tr>
       <tr>
           <td><div class="one">Address: </div></td>
-          <td><div class="two"><textarea type="text" name="txtAddress" id="txtAddress" pattern="[\d|\w|\S]+"  required></textarea></div></td>
+          <td><div class="two"><textarea type="messages" name="txtAddress" id="txtAddress" pattern="[\d|\w|\S]+"  required></textarea></div></td>
       </tr>
       <tr>
           <td><div class="one">Distric: </div></td>
-          <td><div class="two"><input type="text" name="txtDistrict" id="txtDistrict" pattern="[a-zA-Z\s]+"  required></div></td>
+          <td><div class="two"><input type="messages" name="txtDistrict" id="txtDistrict" pattern="[a-zA-Z\s]+"  required></div></td>
       </tr>
       <tr>
           <td><div class="one">Province: </div></td>
-          <td><div class="two"><input type="text" name="txtProvince" id="txtProvince" pattern="[a-zA-Z\s]+"  required></div></td>
+          <td><div class="two"><input type="messages" name="txtProvince" id="txtProvince" pattern="[a-zA-Z\s]+"  required></div></td>
       </tr>
       <tr>
           <td><div class="one">Postal Code: </div></td>
@@ -183,17 +180,16 @@ body{
       </tr>
       <tr>
           <td><div class="one">Mobile number: </div></td>
-          <td><div class="two"><input type="text" name="txtMobileNumber" id="txtMobileNumber" pattern="[0-9]{10}" maxlength="10">
-          <br><small style="">*10 digit without ' - '</small></div></td>
+          <td><div class="two"><input type="tel" name="txtMobileNumber" id="txtMobileNumber" pattern="[0-9]{10}" maxlength="10"></div></td>
       </tr>
       <tr>
         <td></td>
-        <td><div><br><input type="checkbox" onClick="$('#btnRegister').attr('disabled', !$(this).is(':checked'));" required> Allow us send an email reply.</div></td>
+        <td><div><br><input type="checkbox" onclick="$('#btnRegister').attr('disabled', !$(this).is(':checked'));" required> Allow us send an email reply.</div></td>
       </tr>
       <tr>
         <td></td>
-        <td><div><input name="btnRegister" type="submit" id="btnRegister" value="Register" class="btn btn-primary" disabled></div></td>
-        
+        <td><div><input name="btnRegister" type="submit" id="btnRegister" value="Register" class="btn btn-primary" onclick="Reg()" disabled></div></td>
+        <input type="submit" id="btnsub" value="55555" style="display: none;">
       </tr>
     </table>
   </form>
@@ -206,12 +202,12 @@ body{
 <?php include('footer.php'); ?> <!-- FOOT -->
 <script>
 
-// $('#regform').submit(function () {
-//  return false;
-//  Reg(); 
-// });
+$('#regform').submit(function () {
+ return false;
+ Reg(); 
+});
 
-// $('#btnsub').click();
+$('#btnsub').click();
 
 
 $('#txtPassword1, #txtConPassword2').on('keyup', function () {
@@ -247,40 +243,25 @@ function Reg()
 				//
 				// set cookie before go to login page //
 				//
-				if(result=="okay"){
 				document.cookie = "user="+mail; 
 				document.cookie = "pwd="+pwd;
 				// console.log(result);
-				// $("#successdlg").html(result);
+				$("#successdlg").html(result);
 				$.unblockUI();
 				//alert(result);
 				$('#successdlg').dialog({ //begin dialog
 					title:"DETAIL..",
 					dialogClass: "no-close",
-					modal:true,
 					buttons: [
 					{text:'OK', click:function(){ location.href = 'login.php'; }}
 					// {text:'OK', click:function(){ $(this).dialog('close'); }}
 							]
 				});//end dialog
-				}
-				else{
-					$.unblockUI();
-				$('#errordlg').dialog({ //begin dialog
-					title:"ERROR !",
-					dialogClass: "no-close",
-					buttons: [
-					{text:'Cancel', click:function(){ $(this).dialog('close');} }
-							]
-				});//end dialog
-				$('form')[0].reset();
-				$('#btnRegister').attr('disabled');
-			}
 			},
 			error:function()
 			{
-				// console.log(result);
-				// $("#errordlg").html(result);
+				console.log(result);
+				$("#errordlg").html(result);
 				$.unblockUI();
 				$('#errordlg').dialog({ //begin dialog
 					title:"ERROR !",
