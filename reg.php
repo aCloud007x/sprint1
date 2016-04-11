@@ -227,7 +227,8 @@ $('#txtPassword1, #txtConPassword2').on('keyup', function () {
     }
 });
 
-function Reg()
+//ไม่ได้ใช้แล้ว 
+function Reg() 
 {
 	var mail = document.getElementById("txtUsername").value;
 	var pwd = document.getElementById("txtPassword1").value;
