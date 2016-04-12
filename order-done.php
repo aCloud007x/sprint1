@@ -216,7 +216,7 @@ $order_id = mysqli_insert_id($connect);
   	</tr> <!-- END LOWEST -->
 
   	<tr> <!-- LOWEST -->
-  	     <td class='text-center' colspan="5" ><p class="form-control-static"><?php echo $paid_by.': xxxx-xxxx-xxxx-'.$new_card_num; ?></p>
+  	     <td class='text-center' colspan="5" ><p class="form-control-static"><?php echo $paid_by; if($paid_by!='Paypal'){echo ': xxxx-xxxx-xxxx-'.$new_card_num; } ?></p>
   	     <p class="form-control-static"><form method='post' action='order-id.php'>
 		        <input type='hidden' name='orderid' value='<?php echo $order_id; ?>'>
 		        <button class='buttonc pull-right' id='next' style='vertical-align:middle'><span>Confirm</span></button>

@@ -6,6 +6,8 @@
  
 <?php include('head.php'); ?>
 
+
+
 <style type="text/css">
   header.bg {
     background-image: url('bg.gif');
@@ -121,8 +123,8 @@ if(!isset($_SESSION['user'])) {
 <div class="dropdown" style="padding-top:3%;">
 <a onclick="myFunction()" class="dropbtn"><?php $name=$_SESSION['user']; printf("%s",$name); ?></a>
   <div id="myDropdown" class="dropdown-content">
-    <a href="#profile">Profile</a>
-    <a href="#corection">Collection</a>
+    <a href="profile.php">Profile</a>
+    <a href="#collection">Collection</a>
   </div>
 </div>
 		
@@ -159,20 +161,48 @@ if(!isset($_SESSION['user'])) {
             
     </div>
 
+
+
+
+
+
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><a href="TheKeeper.php"><b><img src="home.gif" width="14"> Home</b></a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><b>Products </b><span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">p 1</a></li>
-            <li><a href="#">p 2</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">p ETC.</a></li>
+
+<!-- เริ่มส่วนที่เพิ่มเติม การ์ด 25 -->       
+
+        <li class="dropdown" style="z-index:100;">
+          <a onclick="myFunction2()" class="dropbtn"><b>Products</b><span class="caret"></span></a>
+          <ul id="myDropdown2" class="dropdown-content" style="list-style-type:none; font-weight:bold;">
+            <li><a href="categories1.php">แบบที่ 1</a></li><hr>
+            <li><a href="categories2.php">แบบที่ 2</a></li><hr>
+            <li><a href="categories3.php">แบบที่ 3</a></li><hr>
+            <li><a href="categories4.php">ธนบัตรคลาดเคลื่อน</a></li><hr>
+            <li><a href="categories5.php">ธนบัตรที่ระลึก</a></li><hr>
+            <li><a href="categories6.php">ธนบัติต่างประเทศ</a></li>
+           <!-- <?php
+              $sql="SELECT Pphoto, Pname, Pprice, Pid FROM product"; // คำสั่ง sql อ่านข้อมูลจากตาราง tbl_name
+              $result=mysqli_query($objConnect, $sql); // คิวรี่คำสั่ง sql
+              $num=mysqli_num_rows($result); // ตรวจสอบจำนวน record ที่คิวรี่ออกมา
+              if($num>0){ // ถ้าจำนวน record มากกว่า 0
+                  $count=1; // กำหนดตัวแปร count เพื่อระบุตำแหน่ง record
+                  while($objResult = mysqli_fetch_array($objQuery)){ // วน loop ดึงข้อมูลออกมา ทีละ record
+              ?>
+            <?php echo "<a href='categories.php?Prate=".$objResult["Prate"]."'>Categories</a>" ?>
+            <?php
+                  $count+=1; // เพิ่ม count ทีละ 1
+                    }
+                  }
+              ?>-->
           </ul>
-        </li>
-      </ul>
+      </li>
+<!-- จบส่วนที่เพิ่มเติม การ์ด 25 -->
+
+    </ul>
+
+
 
       <ul class="nav navbar-nav navbar-right">
 
@@ -208,6 +238,32 @@ window.onclick = function(event) {
   }
 }
 </script>
+
+
+<!-- เริ่มส่วนที่เพิ่มเติม การ์ด 25 -->  
+<script>
+function myFunction2() {
+    document.getElementById("myDropdown2").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+<!-- จบส่วนที่เพิ่มเติม การ์ด 25 -->  
+
+
 </header>
 
 
