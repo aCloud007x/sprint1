@@ -169,7 +169,7 @@ body{
           <td><div class="two"><textarea type="text" name="txtAddress" id="txtAddress" pattern="[\d|\w|\S]+"  required></textarea></div></td>
       </tr>
       <tr>
-          <td><div class="one">Distric: </div></td>
+          <td><div class="one">District: </div></td>
           <td><div class="two"><input type="text" name="txtDistrict" id="txtDistrict" pattern="[a-zA-Z\s]+"  required></div></td>
       </tr>
       <tr>

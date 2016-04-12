@@ -101,31 +101,31 @@ $(document).ready(function(){
         <div class="form-group row">
           <label for="inputName" class="col-sm-2 form-control-label"><b>Name</b></label>
           <div class="col-sm-8">
-            <input type="Name" name='sname' class="form-control" id="inputName1" placeholder="Firstname Lastname" value="<?php echo $res['Mname']; ?>" required>
+            <input type="Name" name='sname' class="form-control" id="inputName1" placeholder="Firstname Lastname" pattern="[a-zA-Z\s]+" value="<?php echo $res['Mname']; ?>" required>
           </div>
         </div>
         <div class="form-group row">
           <label for="inputAddress" class="col-sm-2 form-control-label"><b>Address</b></label>
           <div class="col-sm-8">
-            <input type="Address" name='saddress' class="form-control" id="inputAddress1" placeholder="Address" value="<?php echo $res['Maddress']; ?>" required>
+            <input type="Address" name='saddress' class="form-control" id="inputAddress1" placeholder="Address" pattern="[\d|\w|\S]+" value="<?php echo $res['Maddress']; ?>" required>
           </div>
         </div>
         <div class="form-group row">
-          <label for="inputStateProvince" class="col-sm-2 form-control-label"><b>State/Province</b></label>
+          <label for="inputStateProvince" class="col-sm-2 form-control-label"><b>District</b></label>
           <div class="col-sm-8">
-            <input type="StateProvince" name='sstate' class="form-control" id="inputStateProvince1" placeholder="State/Province" value="<?php echo $res['Mstate']; ?>" required>
+            <input type="StateProvince" name='sstate' class="form-control" id="inputStateProvince1" placeholder="District" pattern="[a-zA-Z\s]+" value="<?php echo $res['Mstate']; ?>" required>
           </div>
         </div>
         <div class="form-group row">
-          <label for="inputCity" class="col-sm-2 form-control-label"><b>City</b></label>
+          <label for="inputCity" class="col-sm-2 form-control-label"><b>Province</b></label>
           <div class="col-sm-8">
-            <input type="City" name='scity' class="form-control" id="inputCity1" placeholder="City" value="<?php echo $res['Mcity']; ?>" required>
+            <input type="City" name='scity' class="form-control" id="inputCity1" placeholder="Province" pattern="[a-zA-Z\s]+" value="<?php echo $res['Mcity']; ?>" required>
           </div>
         </div>
         <div class="form-group row">
           <label for="inputPostalCode" class="col-sm-2 form-control-label"><b>Postal Code</b></label>
           <div class="col-sm-8">
-            <input type="PostalCode" name='spostalcode' class="form-control" id="inputPostalCode1" placeholder="Postal Code" value="<?php echo $res['Mpostalcode']; ?>" required>
+            <input type="PostalCode" name='spostalcode' class="form-control" id="inputPostalCode1" placeholder="Postal Code" pattern="[0-9]{5}" maxlength="5" value="<?php echo $res['Mpostalcode']; ?>" required>
           </div>
         </div>
 
@@ -146,31 +146,31 @@ $(document).ready(function(){
         <div class="form-group row">
           <label for="inputName" class="col-sm-2 form-control-label"><b>Name</b></label>
           <div class="col-sm-8">
-            <input type="Name" name='bname' class="form-control" id="inputName2" placeholder="Firstname Lastname" required>
+            <input type="Name" name='bname' class="form-control" id="inputName2" pattern="[a-zA-Z\s]+" placeholder="Firstname Lastname" required>
           </div>
         </div>
         <div class="form-group row">
           <label for="inputAddress" class="col-sm-2 form-control-label"><b>Address</b></label>
           <div class="col-sm-8">
-            <input type="Address" name='baddress' class="form-control" id="inputAddress2" placeholder="Address" required>
+            <input type="Address" name='baddress' class="form-control" id="inputAddress2" pattern="[a-zA-Z|\d|\w|\S]+" placeholder="Address" required>
           </div>
         </div>
         <div class="form-group row">
-          <label for="inputStateProvince" class="col-sm-2 form-control-label"><b>State/Province</b></label>
+          <label for="inputStateProvince" class="col-sm-2 form-control-label"><b>District</b></label>
           <div class="col-sm-8">
-            <input type="StateProvince" name='bstate' class="form-control" id="inputStateProvince2" placeholder="State/Province" required>
+            <input type="StateProvince" name='bstate' class="form-control" id="inputStateProvince2" pattern="[a-zA-Z\s]+" placeholder="District" required>
           </div>
         </div>
         <div class="form-group row">
-          <label for="inputCity" class="col-sm-2 form-control-label"><b>City</b></label>
+          <label for="inputCity" class="col-sm-2 form-control-label"><b>Province</b></label>
           <div class="col-sm-8">
-            <input type="City" name='bcity' class="form-control" id="inputCity2" placeholder="City" required>
+            <input type="City" name='bcity' class="form-control" id="inputCity2" pattern="[a-zA-Z\s]+" placeholder="Province" required>
           </div>
         </div>
         <div class="form-group row">
           <label for="inputPostalCode" class="col-sm-2 form-control-label"><b>Postal Code</b></label>
           <div class="col-sm-8">
-            <input type="PostalCode" name='bpostalcode' class="form-control" id="inputPostalCode2" placeholder="Postal Code" required>
+            <input type="PostalCode" name='bpostalcode' class="form-control" id="inputPostalCode2" pattern="[0-9]{5}" maxlength="5" placeholder="Postal Code" required>
           </div>
         </div>
 
@@ -210,31 +210,31 @@ $(document).ready(function(){
                 <div class="form-group row">
                   <label for="inputCardholder" class="col-sm-2 form-control-label">Cardholder</label>
                   <div class="col-sm-8">
-                    <input type="Cardholder" class="form-control" id="inputCardholder" placeholder="The name on the card">
+                    <input type="Cardholder" class="form-control" id="inputCardholder" pattern="[a-zA-Z\s]+" placeholder="The name on the card">
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="inputCardNumber" class="col-sm-2 form-control-label">Card Number</label>
                   <div class="col-sm-8">
-                    <input type="cardNumber" name='card' class="form-control" id="inputCardNumber" placeholder="16-digit card number" maxlength="16">
+                    <input type="cardNumber" name='card' class="form-control" id="inputCardNumber" pattern="[0-9]{16}" maxlength="16" placeholder="16-digit card number">
                   </div>
                 </div>
               <div class="form-group row">
                 <div class="form-inline">
                   <label for="inputDate" class="col-sm-2 form-control-label">Expiration Date</label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" id="inputDate" placeholder="Month">
+                    <input type="text" class="form-control" id="inputDate" placeholder="Month" pattern="[a-zA-Z\s]+">
                   </div>
                  
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" id="inputDate" placeholder="Year">
+                    <input type="text" class="form-control" id="inputDate" placeholder="Year" pattern="[0-9]{4}" maxlength="4">
                   </div>
                 </div>
               </div>
                 <div class="form-group row">
                   <label for="inputCVV" class="col-sm-2 form-control-label">CVV Number</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" id="inputCVV" placeholder="3-digit card number" maxlength="3">
+                    <input type="text" class="form-control" id="inputCVV" placeholder="3-digit card number" maxlength="3" pattern="[0-9]{3}">
                   </div>
                 </div>
               </div>

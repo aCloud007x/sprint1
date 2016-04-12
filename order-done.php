@@ -89,7 +89,7 @@ $bill_city = $_POST["bcity"];
 $bill_postalcode = $_POST["bpostalcode"];
 
 
-$sql = "INSERT INTO orders(`order_id`, `Mid`, `paid_by`, `card_num`, `paid`, `delivery`, `ship_name`, `ship_address`, `ship_state`, `ship_city`, `ship_postalcode`, `bill_name`, `bill_address`, `bill_state`, `bill_city`, `bill_postal`, `time`) VALUES(0, '$Mid', '$paid_by', '$card_num', '$paid', '$deliver', 
+$sql = "INSERT INTO orders(`order_id`, `Mid`, `paid_by`, `card_num`, `paid`, `delivery`, `ship_name`, `ship_address`, `ship_state`, `ship_city`, `ship_postalcode`, `bill_name`, `bill_address`, `bill_state`, `bill_city`, `bill_postal`, `time`) VALUES(0, $Mid, '$paid_by', '$card_num', '$paid', '$deliver', 
 '$ship_name','$ship_address','$ship_state','$ship_city','$ship_postalcode', 
 '$bill_name', '$bill_address', '$bill_state', '$bill_city', '$bill_postalcode', NOW())";
 $r = mysqli_query($connect, $sql)or die(mysqli_error($connect));
