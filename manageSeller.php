@@ -8,23 +8,22 @@
 <!-- ///// end collapse link ///// -->
 
 <!-- ///// script for approve and decline button ///// -->
-	<script type="text/javascript">
+	<script>
 		$(function() {
 			$('button.approve').click(function() {
 				var id = $(this).attr('data-id');
-				$('form [name=item_id]').val(id);
-				$('form [name=action]').val('approve');
-				$('form').submit();
+				$('#item_id').val(id);
+				$('#action').val('approve');
+				// window.alert($('form [name=action]').val());
+				$('#myform').submit();
 			});
 			
 			$('button.decline').click(function() {
-				// if(!confirm('ยืนยันว่าจะปฏิเสธ ?')) {
-				// 	return false;
-				// }
 				var id = $(this).attr('data-id');
-				$('form [name=action]').val('delete');
-				$('form [name=item_id]').val(id);
-				$('form').submit();
+				$('#item_id').val(id);
+				$('#action').val('decline');
+				// window.alert($('form [name=action]').val());
+				$('#myform').submit();
 			});
 		});
 
@@ -35,21 +34,7 @@
 
 <?php include('header-menu.php'); header('Content-type: text/html; charset=UTF-8'); 
 
-///// IF click Button Form will submit here /////
-if($_POST) {
-	$item_id = $_POST['item_id'];
-	if($_POST['action'] == "approve") {
 
-		$sql = "UPDATE `seller` SET `Sstatus`='approve' WHERE `Sid`='$item_id'";
-		$r = mysqli_query($connect, $sql);
-		$pro = mysqli_fetch_array($r);	
-	}
-	else if($_POST['action'] == "decline") {
-		$sql = "UPDATE `seller` SET `Sstatus`='decline' WHERE `Sid`='$item_id'";
-		mysqli_query($connect, $sql);	
-	}
-}
-///// End if click Button Form will submit here /////
 
 ?>
 
@@ -60,6 +45,24 @@ if($_POST) {
 
 	<?php  
 	include('connect.php');
+	///// IF click Button Form will submit here /////
+
+if($_POST) {
+	$item_id = $_POST['item_id'];
+	if($_POST['action'] == "approve") {
+		$sql = "UPDATE `seller` SET `Sstatus`='approve' WHERE `Sid`=$item_id";
+		mysqli_query($connect, $sql)or die(mysqli_error($connect));
+		// echo "Approve Done";
+	}
+	else if($_POST['action'] == "decline") {
+		$sql = "UPDATE `seller` SET `Sstatus`='decline' WHERE `Sid`=$item_id";
+		mysqli_query($connect, $sql)or die(mysqli_error($connect));
+		// echo "Decline Done";
+	}
+	// echo"<meta http-equiv='refresh' content='0;url=manageSeller.php'>";
+}
+
+///// End if click Button Form will submit here /////
 
 	mysqli_set_charset($connect, 'utf8');
 		$objConnect = $connect;
@@ -103,19 +106,21 @@ if($_POST) {
 									<p><b style="margin-left:10px;">Reason:</b> <?php echo $objResult["Sreason"];?></p>
 									<br>
 
-
-									<button class='btn btn-primary approve' data-id='<?php echo $objResult["Sid"]; ?>' style="margin-left:10px;">Approve</button>
-									<button class='btn btn-danger decline' data-id='<?php echo $objResult["Sid"]; ?>'>Decline</button>
+									
+									<button class='approve btn btn-primary' data-id='<?php echo $objResult["Sid"]; ?>' style="margin-left:10px;">Approve</button>
+									<button class='decline btn btn-danger' data-id='<?php echo $objResult["Sid"]; ?>'>Decline</button>
 								</div>
 							</div>			            	
 						</td>
-			            <td><button class='btn btn-primary approve' data-id='<?php echo $objResult["Sid"]; ?>' style="margin-left:10px;">Approve</button></td>
-			            
+			            <td><button class='approve btn btn-primary' data-id='<?php echo $objResult["Sid"]; ?>' style="margin-left:10px;">Approve</button>
+
+			            </td>
+
 			            <!-- ///// For Post data-id and action ///// -->
-						<form method="post">
-							<input type="hidden" name="action">
-							<input type="hidden" name="item_id">
-						</form>
+			            		<form id="myform" method="post">
+					            	<input type="hidden" id='action' name="action">
+									<input type="hidden" id='item_id' name="item_id">
+								</form>
 						<!-- ///// END For Post data-id and action ///// -->
 			        </tr>
 			        <?php
@@ -123,6 +128,8 @@ if($_POST) {
 			            	}
 			            }
 			        ?>
+			        
+							
 
 			    </table>
 			</center>
