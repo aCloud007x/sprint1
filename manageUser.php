@@ -12,7 +12,7 @@
 <div class="container" style="padding-top: 5;background-color: #FAFAFA;">
 <?php include('admin-header-menu.php'); ?>
 
-<h1><p class='text-center'>Manage Product (temporary)</p></h1>
+<h1><p class='text-center'>Manage User (temporary)</p></h1>
 <br><br><br>
 
 </div>

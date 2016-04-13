@@ -28,6 +28,6 @@ header("refresh: 2; url=TheKeeper.php");
 </head>
 
 <body>
-	<h3 class="green">Destroy Cookie+Session <br> Redirecting to home page in 3 second.. <br> or <a href="TheKeeper.php">Click Here</a> </h3>
+	<h3 class="green">Logout Success<br> Redirecting to home page in 2 second.. <br> or <a href="TheKeeper.php">Click Here</a> </h3>
 </body>
 </html>

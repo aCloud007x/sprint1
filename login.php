@@ -111,6 +111,7 @@ if($_POST) {
 
 		// USE FOR STAR CHECK SESSION
 		 $_SESSION['user'] = $data['Mname'];
+		 $_SESSION['username'] = $data['Musername'];
 		 $_SESSION['userID'] = $data['Mid']; //for Rating Star
 		 header( "location: TheKeeper.php" );
  		exit(1); 

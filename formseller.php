@@ -1,6 +1,7 @@
-<?php include('header-menu.php'); ?> 
+<?php include('header-menu.php'); 
+header('Content-type: text/html; charset=UTF-8');?> 
 
-
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <!-- begin zoom function -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <link href="css/jquery.fs.zoomer.css" rel="stylesheet" type="text/css" media="all">
@@ -78,27 +79,27 @@ td a {
     <br />
     <br />
     <br />	
-    <form class="form-horizontal" action="seller_register.php" method="post">
+    <form class="form-horizontal" action="seller_register.php" method="post" accept-charset="utf-8">
   	
  		 <div class="form-group">
     		<label for="exampleInputEmail2" class="col-sm-3 control-label">Name</label>
         
          	 <div class="col-sm-5">  
-   			 <input type="text" class="form-control "  id="name" name="name" placeholder="Bear Waldorf" data-validation="required"/>
+   		     	<p class="form-control-static" ><?php echo $objResult["Mname"];?></p>
  			 </div>
           </div>
            
            	<div class="form-group">
     			<label class="col-sm-3 control-label">Username</label>
    				 <div class="col-sm-5">
-    		 		 <p class="form-control-static" ><?php echo $objResult["Mname"];?></p>
+    		 		 <p class="form-control-static" ><?php echo $objResult["Musername"];?></p>
    			 	</div>
  			 </div>
              
             	<div class="form-group"> 
                 <label class="col-sm-3 control-label">Reason</label>
    				 <div class="col-sm-5">
-            	<textarea class="form-control" row="5" data-validation="required" id="reason" name="reason"></textarea>
+            	<textarea class="form-control" row="5" data-validation="required" id="reason" name="reason" maxlength="255"></textarea>
                  </div>
                  </div>
  

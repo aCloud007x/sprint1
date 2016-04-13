@@ -1,4 +1,9 @@
-<?php include('header-menu.php'); ?> 
+<?php include('header-menu.php'); 
+header('Content-type: text/html; charset=UTF-8');
+if(!isset($_SESSION['user'])) {
+	exit;
+}
+?> 
 
 
 <!-- begin zoom function -->
@@ -69,13 +74,14 @@ td a {
     <p>Name : <?php echo $objResult["Mname"];?></p>
     <p>Tel : <?php echo $objResult["Mtel"];?></p>
     <p>Address : <?php echo $objResult["Maddress"];?></p>
-    <p>State : <?php echo $objResult["Mstate"]; ?></p>
-    
+    <p>District : <?php echo $objResult["Mstate"]; ?></p>
+    <p>Province : <?php echo $objResult["Mcity"]; ?></p>
+    <p>Postal Code : <?php echo $objResult["Mpostalcode"]; ?></p>
     <?php  ?>
     <br/>
     <br/>
-   
-    <a href="formseller.php"><p>register to the seller</p></a>
+    <p><b>Menu</b></p>
+    <a href="formseller.php"><p>Register to the seller</p></a>
     </div>
 
 

@@ -1,7 +1,9 @@
-<?php 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<?php header('Content-type: text/html; charset=UTF-8');
  //ob_start() ; 
  session_start(); 
 	include "connect.php";
+	mysqli_query($connect,"SET NAMES UTF8");
  	$objConnect = $connect;
 	
 	////$strSQL = "SELECT Mid FROM member WHERE Mname = '".$_SESSION['user']."'";
@@ -14,17 +16,17 @@
 		$objResult = mysqli_fetch_array($objQuery);
 
 		
-	 echo $name=$_POST["name"];
+	//$name=$_POST["name"];
 	 $id=$objResult["Mid"];
-	 echo $reason=$_POST["reason"];
+	 $reason=$_POST["reason"];
 	 $status="waiting";
-	$sql  = "INSERT INTO `seller`(`Mid`, `Sname`, `Sreason`, `Sstatus`) VALUES ('$id','$name','$reason','$status')";
+	$sql  = "INSERT INTO `seller`(`Sid`,`Mid`, `Sreason`, `Sstatus`) VALUES (0,'$id','$reason','$status')";
 	$r = mysqli_query($connect,$sql)or die(mysqli_error($connect));
 	
 	if($r)
 	{ 
-		echo "Success<br/>";
-		echo "<a href=TheKeeper.php>go to homepage</a>";
+		header("refresh: 0; url=TheKeeper.php");
+		// echo '<h3 class="green">REQUEST SEND<br> Redirecting to home page in 1 second.. <br> or <a href="TheKeeper.php">Click Here</a></h3>';
 		
 	}
 	else{ 

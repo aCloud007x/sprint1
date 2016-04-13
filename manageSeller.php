@@ -32,14 +32,12 @@
 
 <body background="bg2.gif">
 
-<?php include('header-menu.php'); header('Content-type: text/html; charset=UTF-8'); 
-
-
-
-?>
-
+<?php 
+header('Content-type: text/html; charset=UTF-8');
+include('header-menu.php');  ?>
 <br>
-<div class="container" style="padding-top: 45px;background-color: #FAFAFA;">
+<div class="container" style="padding-top: 5px;background-color: #FAFAFA;">
+<?php include('admin-header-menu.php'); ?>
 	<h3 align="center"><img src="mSeller.png" style="height:35px; width:35px; margin-right:15px;"><b>Manage Seller</b></h3>
 	<hr>
 
@@ -128,22 +126,18 @@ if($_POST) {
 			            	}
 			            }
 			        ?>
-			        
-							
-
+			        			
 			    </table>
 			</center>
 			<hr>
+
 </div>
+<br>
 
-<br><br>
-
-<div class="container" style="padding-top: 45px;background-color: #FAFAFA;">
+<div class="container" style="padding-top: 0px;background-color: #FAFAFA;">
 	<h3 align="center"><img src="seller.png" style="height:35px; width:35px; margin-right:15px;"><b>Seller</b></h3>
 	<hr>
 	
-
-
 	
 	<?php  
 	include('connect.php');

@@ -71,10 +71,9 @@
     display: none;
     position: absolute;
     background-color: #f9f9f9;
-    min-width: 200px;
+    min-width: 160px;
     overflow: auto;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-
 }
 
 .dropdown-content a {
@@ -149,7 +148,7 @@ if(!isset($_SESSION['user'])) {
  
  <!-- START NAV BAR -->
 <div align="right" style="margin-right: 0%;margin-left: 0%;margin-bottom:0.5%;">
-<nav class="navbar navbar-default" style="font-size: 14px;">
+<nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -161,6 +160,9 @@ if(!isset($_SESSION['user'])) {
       </button>
             
     </div>
+
+
+
 
 
 
@@ -188,35 +190,10 @@ if(!isset($_SESSION['user'])) {
 <!-- เริ่มส่วนที่เพิ่มเติม การ์ด 7 --> 
 
 <?php if(isset($_SESSION['username'])){ if($_SESSION['username']=='testing@admin.com') {   ?>
-<!-- PRODUCT  -->
-		<ul class="nav navbar-nav">
-		<li class=""><a href="manageProduct.php"><span class="glyphicon glyphicon-tag" aria-hidden="true"></span> 
-		<b>Manage Products</b></a></li>
-  		</ul>
-<!-- END PRODUCT -->
-<!-- User -->
-		<ul class="nav navbar-nav">
-		<li class=""><a href="manageUser.php"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 
-		<b>Manage Users</b></a></li>
-  		</ul>
- <!-- END User -->
-<!-- SELLER -->
-		<ul class="nav navbar-nav">
-        <li class="dropdown" style="z-index:100;">
-	      <a onclick="myFunction3()" class="dropbtn"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-	      <b>Manage Sellers </b><span class="caret"></a>
-	      	<ul id="myDropdown3" class="dropdown-content" style="list-style-type:none; font-weight:bold;">
-	        <li><a href="manageSeller.php">Sellers</a></li><hr>
-	        <li><a href="manageProduct.php">The consignment</a></li>
-	      	</ul>
-  		</li>
-  		</ul>
-<!-- END SELLER -->
-
-	<!-- <ul class="nav navbar-nav navbar-right">
+	<ul class="nav navbar-nav navbar-right">
 	<li class=""><a href="manageSeller.php"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> 
 	<b>Admin Panel</b></a></li>
-	</ul> -->
+	</ul>
 
  <?php }} ?>
 <!-- จบส่วนที่เพิ่มเติม การ์ด 7 -->
