@@ -26,7 +26,6 @@
 				$('#myform').submit();
 			});
 		});
-
 	</script>
 <!-- ///// END script for approve and decline button ///// -->
 
