@@ -180,7 +180,6 @@ if($_POST) {
 									<br>
 									<p><b style="margin-left:10px;">Reason:</b> <?php echo $objResult["Sreason"];?></p>
 									<br>
-
 								</div>
 							</div>			            	
 						</td>

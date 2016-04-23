@@ -32,7 +32,7 @@
 
 		$objConnect = $connect;
 		//$objDB = mysqli_select_db("sec01_group3");
-		$strSQL = "SELECT Pphoto, Pname, Pprice, Pid FROM product WHERE  pType='4' ORDER BY `Pdate` DESC";
+		$strSQL = "SELECT Pphoto, Pname, Pprice, Pid FROM product, category WHERE product.cNoType=category.cNoType AND product.cNoType='4' ORDER BY `Pdate` DESC";
 		$objQuery = mysqli_query($objConnect, $strSQL) or die ("Error Query [".$strSQL."]");
 	?>
 	
@@ -44,7 +44,7 @@
 			<div class="container">
 			<div class="row marketing">
 				<?php
-			        $sql="SELECT Pphoto, Pname, Pprice, Pid FROM product ORDER BY `Pdate` DESC"; // คำสั่ง sql อ่านข้อมูลจากตาราง tbl_name
+			        $sql="SELECT Pphoto, Pname, Pprice, Pid FROM product, category WHERE product.cNoType=category.cNoType ORDER BY `Pdate` DESC"; // คำสั่ง sql อ่านข้อมูลจากตาราง tbl_name
 			        $result=mysqli_query($objConnect, $sql); // คิวรี่คำสั่ง sql
 			        $num=mysqli_num_rows($result); // ตรวจสอบจำนวน record ที่คิวรี่ออกมา
 			        if($num>0){ // ถ้าจำนวน record มากกว่า 0
